@@ -8,14 +8,18 @@ if __name__ == "__main__":
     set_seed(args.seed)
 
     client = None
-    llm_config = llm_init(f"./auth.yaml", args.llm_type, args.setting)
+    llm_config = llm_init("/Users/ximing/Desktop/EvoPrompt/BBH/auth.yaml", args.llm_type, args.setting)
     if args.evo_mode == 'de':
         from evoluter import DEEvoluter
-        evoluter = DEEvoluter(args, llm_config, client)
+
+        sampling_method = args.sampling_method
+        evoluter = DEEvoluter(args, llm_config, client,sampling_method)
         evoluter.evolute()
     elif args.evo_mode == 'ga':
         from evoluter import GAEvoluter
-        evoluter = GAEvoluter(args, llm_config, client)
+
+        sampling_method = args.sampling_method
+        evoluter = GAEvoluter(args, llm_config, client,sampling_method)
         evoluter.evolute()
     elif args.evo_mode == 'ape':
         from evoluter import ParaEvoluter

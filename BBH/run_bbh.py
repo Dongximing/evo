@@ -1,4 +1,6 @@
 # evaluating GPT-3.5 turbo model on BBH
+import logging
+from operator import index
 
 import openai
 import json
@@ -7,7 +9,11 @@ from tqdm import tqdm
 from tenacity import retry, stop_after_attempt, wait_chain, wait_fixed
 from utils import extract_ans, batchify
 from llm_client import turbo_query, davinci_query
-
+import tiktoken
+from openai import OpenAI
+import os
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY",
+                                       ""))
 MULTIPLE_CHOICE_TASKS = [
         'temporal_sequences', 'disambiguation_qa', 'date_understanding', 'tracking_shuffled_objects_three_objects', 'penguins_in_a_table', 
         'geometric_shapes', 'snarks', 'ruin_names', 'tracking_shuffled_objects_seven_objects', 'tracking_shuffled_objects_five_objects', 
@@ -29,6 +35,9 @@ def create_dataset(mode, task_prompt, cot_prompt, eval_data,demon=1):
     questions = []
     prompt_qs = []
     answers= []
+    # print("BBH/run_bbh.py:38",eval_data)
+    # print("BBH/run_bbh.py:39", cot_prompt)
+    # print("BBH/run_bbh.py:40",task_prompt)
     for q_ in eval_data:
         task_prompt = task_prompt.replace('<prompt>', cot_prompt)
         if demon: 
@@ -45,15 +54,170 @@ def create_dataset(mode, task_prompt, cot_prompt, eval_data,demon=1):
             a = q_['target']
         answers.append(a)
     return prompt_qs, questions,answers
+def create_parallel_dataset(mode, task_prompt, cot_prompts, eval_data,demon=1):
+    questions = []
+    prompt_qs = []
+    answers= []
+    print("BBH/run_bbh.py:38",eval_data)
+    print("BBH/run_bbh.py:39", cot_prompts)
+    print("BBH/run_bbh.py:40",task_prompt)
+    for cot_prompt in cot_prompts:
+        for q_ in eval_data:
+            task_prompt = task_prompt.replace('<prompt>', cot_prompt)
+            if demon:
+                q = '\n\nQ: ' + q_['input']
+                prompt_q = task_prompt + q + f"\nA: {cot_prompt}"
+            else:
+                q = 'Q: ' + q_['input']
+                prompt_q = q + f"\nA: {cot_prompt}"
+            questions.append(q)
+            prompt_qs.append(prompt_q)
+            if mode == 'multiple_choice':
+                a = q_['target'][1]
+            elif mode == 'free_form':
+                a = q_['target']
+            answers.append(a)
+    return prompt_qs, questions,answers
+def create_request(custom_id, user_message):
+    return {
+        "custom_id": custom_id,
+        "method": "POST",
+        "url": "/v1/chat/completions",
+        "body": {
+            "model": "gpt-3.5-turbo-0125",
+            "messages": [
+                {"role": "user", "content": user_message}
+            ],
+            "logprobs": True,
+            "top_logprobs": 20,
+
+        },
+    }
+def inference_openai(sentences):
+    import json
+
+    requests = [create_request(f"request-{i + 1}", msg) for i, msg in enumerate(sentences)]
+
+    file_path = 'api_requests.jsonl'
+
+    # Write each request to the .jsonl file
+    with open(file_path, 'w') as file:
+        for request in requests:
+            # Convert each dictionary to a JSON string
+            json_line = json.dumps(request)
+            # Write the JSON string to the file followed by a newline
+            file.write(json_line + '\n')
+
+    print(f"File saved successfully to {file_path}")
+    batch_input_file = client.files.create(
+        file=open(f"{file_path}", "rb"),
+        purpose="batch"
+    )
+    batch_input_file_id = batch_input_file.id
+    print(batch_input_file_id)
+
+    client.batches.create(
+        input_file_id=batch_input_file_id,
+        endpoint="/v1/chat/completions",
+        completion_window="24h",
+        metadata={
+            "description": "nightly eval job"
+        }
+    )
+    batch_id = client.batches.list().first_id
+    import time
+    running = True
+    while running == True:
+        status = client.batches.retrieve(batch_id)
+        print(f"Current status: {status}")
+        if status.status == 'completed':
+            print("Batch processing is complete.")
+            running = False
+        elif status.status == 'failed':
+            print("Batch processing failed.")
+            running = False
+        else:
+            print("Batch still processing. Waiting...")
+            time.sleep(10)  # wait for 10 seconds before checking again
+
+    file_response = client.files.content(status.output_file_id)
+    response_file = "response_file.jsonl"
+    with open(response_file, 'w') as file:
+            file.write(file_response.text)
+    import json
+    output_cost = 0
+    list_top20_logprobs = []
+    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    all_data = []
+    with open('response_file.jsonl', 'r') as file:
+        for line in file:
+            data = json.loads(line)
+            all_data.append(data)
+    all_data.sort(key=lambda x: x['custom_id'])
+    responses = []
+    for  data in all_data:
+        top_twenty_logprobs = data["response"]["body"]["choices"][0]["logprobs"]
+        response = data["response"]["body"]["choices"][0]["message"]["content"]
+        responses.append(response)
+        # print(f"\nResponse: {response}")
+        # print(f"\nTop 20 logprobs: {top_twenty_logprobs}")
+        token_dict = {
+            data["token"]: {tp["token"]: tp["logprob"] for tp in data["top_logprobs"]}
+            for data in top_twenty_logprobs["content"]
+        }
+        output_cost += len(encoding.encode(response))
+
+        list_top20_logprobs.append(token_dict)
+    return list_top20_logprobs, output_cost,responses
 
 
-def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs):
+def first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs):
+    mode = 'multiple_choice' if task in MULTIPLE_CHOICE_TASKS else 'free_form'
+    prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
+    print(prompt_qs)
+    list_top20_logprobs, output_cost,responses = inference_openai(prompt_qs)
+    return list_top20_logprobs, output_cost,responses
+
+
+
+def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon, anchor, discrete, **kwargs):
     # for task in tasks:
     # print('Testing %s ...' % task)
     correct = 0
     mode = 'multiple_choice' if task in MULTIPLE_CHOICE_TASKS else 'free_form'
     print_first = True
-    prompt_qs, questions,answers = create_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
+
+
+    score = np.empty((0, 3))
+    if anchor:
+
+        prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
+        print("BBH/run_bbh.py:195",len(prompt_qs),len(questions),len(answers))
+
+        list_top20_logprobs, output_cost, responses =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs)
+        for index, list_top20_logprob in enumerate(list_top20_logprobs):
+            ans_ = extract_ans(responses[index], mode)
+            logit_matrix = np.zeros(3)
+            if ans_ == answers[index]:
+                for item in list_top20_logprob:
+                    if item.strip() == answers[index]:
+                        if not discrete:
+                            if answers[index] == "yes":
+                                logit_matrix[0] = list_top20_logprob[item][item]
+                            else:
+                                logit_matrix[1] = list_top20_logprob[item][item]
+                        else:
+                            if answers[index] == "yes":
+                                logit_matrix[0] = 1
+                            else:
+                                logit_matrix[1] = 1
+                correct += 1
+
+            score = np.vstack((score, logit_matrix))
+        accuracy = correct / len(eval_data)
+        return accuracy, score
+    prompt_qs, questions, answers = create_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
+    print("BBH/run_bbh.py:212",prompt_qs)
     if 'turbo' in model_index:
         for i in tqdm(range(len(prompt_qs))):
             prompt_q = prompt_qs[i]
@@ -61,8 +225,10 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
             a = answers[i]
 
         # for prompt_q,q,a in tqdm(zip(prompt_qs, questions,answers)):
-            ans_model = turbo_query(prompt_q, temperature=0,**kwargs)
+            ans_model,logits = turbo_query(prompt_q, temperature=0,**kwargs)
             ans_ = extract_ans(ans_model, mode)
+            logger.info(f"ans_ ------------------->{ans_}")
+            logger.info(f"real_ans_ ------------------->{a}")
             if print_first:
                 logger.info('First prompt: ')
                 logger.info(prompt_q)
@@ -70,24 +236,23 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                 logger.info(ans_model)
                 logger.info(ans_)
                 print_first = False
-            
+            logit_matrix = np.zeros(3)
             if ans_ == a:
+                for item in logits.content:
+                    print("item",item)
+                    if item.token.strip() == a:
+                        if a == "yes":
+                            logit_matrix[0] = item.logprob
+                        else:
+                            logit_matrix[1] = item.logprob
                 correct += 1
-    else:
-        batched_prompt_qa = batchify(prompt_qs)
-        responses= []
-        for batch in tqdm(batched_prompt_qa):
-            if print_first:
-                logger.info('First prompt: ')
-                logger.info(batch[0])
-                print_first = False
-            response = davinci_query(batch, client,temperature=0,**kwargs)
-            responses.extend(response)
-        for ans, q, a in zip(responses, questions, answers):
-            ans_ = extract_ans(ans, mode)
-            if ans_ == a:
-                correct += 1
+
+            score = np.vstack((score, logit_matrix))
+        logger.info(f"score -----------size {score.shape}")
+
+
     accuracy = correct / len(eval_data)
+    logger.info(f"prompt_qs in 96  accuracy----------------------> {accuracy}")
     print('%s acc %.4f' % (task, correct / len(eval_data)))
-    return accuracy
+    return accuracy, score
 

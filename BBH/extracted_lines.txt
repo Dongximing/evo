@@ -1,0 +1,80 @@
+[2024-08-28 16:56:20,215] -  step 0, pop 0    prompt First, let's reflect. ----------- new score: 0.85
+[2024-08-28 16:56:40,172] -  step 0, pop 1    prompt Starting off with, think about every action cautiously to approach this logically. ----------- new score: 0.9
+[2024-08-28 16:57:01,557] -  step 0, pop 2    prompt First, think deeply and analyze using logic and rationale. ----------- new score: 0.5
+[2024-08-28 16:57:24,408] -  step 0, pop 3    prompt Initially, we'll take on this math challenge step by step, concentrating on each element individually. ----------- new score: 0.8
+[2024-08-28 16:57:46,720] -  step 0, pop 4    prompt Initially, consider this step by step. ----------- new score: 0.6
+[2024-08-28 16:58:08,252] -  step 0, pop 5    prompt To begin with, let's consider this systematically. ----------- new score: 0.8
+[2024-08-28 16:58:30,233] -  step 0, pop 6    prompt First, let's consider step by step with reason and logic. ----------- new score: 0.55
+[2024-08-28 16:58:52,041] -  step 0, pop 7    prompt First, consider this rationally. ----------- new score: 0.75
+[2024-08-28 16:59:15,116] -  step 0, pop 8    prompt First, think about every step thoroughly and address this issue gradually, focusing on individual steps. ----------- new score: 0.85
+[2024-08-28 16:59:35,665] -  step 0, pop 9    prompt First, let's analyze this logically. ----------- new score: 0.8
+[2024-08-28 16:59:56,250] -  step 1, pop 0    prompt First, reflect on every stage thoughtfully. ----------- new score: 0.9
+[2024-08-28 17:00:19,348] -  step 1, pop 1    prompt First, consider this logically and think deeply. ----------- new score: 0.75
+[2024-08-28 17:00:40,179] -  step 1, pop 2    prompt First, think about this carefully. ----------- new score: 0.95
+[2024-08-28 17:01:02,607] -  step 1, pop 3    prompt First, let's reflect on this task and then analyze it methodically to tackle it step by step. ----------- new score: 0.8
+[2024-08-28 17:01:26,676] -  step 1, pop 4    prompt To start with, Let’s consider this rationally step by step. ----------- new score: 0.75
+[2024-08-28 17:01:51,349] -  step 1, pop 5    prompt To begin with, contemplate the process thoroughly. ----------- new score: 0.9
+[2024-08-28 17:02:12,547] -  step 1, pop 6    prompt Initially, consider this rationally. ----------- new score: 1.0
+[2024-08-28 17:02:33,027] -  step 1, pop 7    prompt First, deliberate on every step cautiously. ----------- new score: 0.95
+[2024-08-28 17:02:55,658] -  step 1, pop 8    prompt First, contemplate every step thoroughly and approach this issue gradually, focusing on individual steps. ----------- new score: 0.85
+[2024-08-28 17:03:18,801] -  step 1, pop 9    prompt First, handle the current question gradually, one by one. ----------- new score: 0.7
+[2024-08-28 17:03:41,943] -  step 2, pop 0    prompt First, break down the process into simple steps. ----------- new score: 1.0
+[2024-08-28 17:04:05,426] -  step 2, pop 1    prompt First, let’s carefully analyze each step. ----------- new score: 1.0
+[2024-08-28 17:04:28,828] -  step 2, pop 2    prompt First, solve the challenging problem step by step to methodically find the solution. ----------- new score: 0.55
+[2024-08-28 17:04:50,246] -  step 2, pop 3    prompt To begin with, we will address this math task step by step. ----------- new score: 0.65
+[2024-08-28 17:05:14,631] -  step 2, pop 4    prompt First, gradually solve the question methodically. ----------- new score: 1.0
+[2024-08-28 17:05:37,249] -  step 2, pop 5    prompt To begin by considering each step carefully and approaching the matter slowly, concentrating on specific steps. ----------- new score: 0.75
+[2024-08-28 17:05:58,348] -  step 2, pop 6    prompt To start with, consider the given task rationally. ----------- new score: 0.7
+[2024-08-28 17:06:28,456] -  step 2, pop 7    prompt First, start with each task meticulously and approach the problem slowly, beginning with, ----------- new score: 0.95
+[2024-08-28 17:06:53,842] -  step 2, pop 8    prompt First, analyze from the start logically, considering each step thoroughly and addressing the issue gradually. ----------- new score: 0.6
+[2024-08-28 17:07:18,526] -  step 2, pop 9    prompt At the start, think about each task in detail, focusing on every aspect. ----------- new score: 0.75
+[2024-08-28 17:07:40,131] -  step 3, pop 0    prompt At the outset, consider for a moment. ----------- new score: 0.75
+[2024-08-28 17:08:04,403] -  step 3, pop 1    prompt Initially, analyze each step carefully and approach the problem systematically. ----------- new score: 0.7
+[2024-08-28 17:08:25,188] -  step 3, pop 2    prompt To start with, ----------- new score: 1.0
+[2024-08-28 17:08:46,703] -  step 3, pop 3    prompt First, carefully plan each step and approach the problem step by step. ----------- new score: 0.65
+[2024-08-28 17:09:10,348] -  step 3, pop 4    prompt First, start by reasoning through this logically. ----------- new score: 0.85
+[2024-08-28 17:09:37,137] -  step 3, pop 5    prompt To begin with, analyze each step carefully and approach the matter gradually, concentrating on individual stages. ----------- new score: 0.6
+[2024-08-28 17:09:58,170] -  step 3, pop 6    prompt First, let’s analyze this logically. ----------- new score: 0.7
+[2024-08-28 17:10:22,606] -  step 3, pop 7    prompt Begin by thoroughly analyzing each step and gradually tackle the problem, focusing on individual actions. ----------- new score: 0.55
+[2024-08-28 17:10:45,889] -  step 3, pop 8    prompt First, reflect on every step diligently to address this issue gradually, focusing on individual steps. ----------- new score: 0.8
+[2024-08-28 17:11:06,372] -  step 3, pop 9    prompt First, let’s think about this rationally. ----------- new score: 0.85
+[2024-08-28 17:11:28,904] -  step 4, pop 0    prompt First, let us analyze the situation rationally and carefully consider every detail. ----------- new score: 0.6
+[2024-08-28 17:11:53,167] -  step 4, pop 1    prompt First, let's carefully evaluate each step. ----------- new score: 0.85
+[2024-08-28 17:12:14,464] -  step 4, pop 2    prompt Let's reflect. ----------- new score: 0.95
+[2024-08-28 17:12:43,833] -  step 4, pop 3    prompt Begin by carefully analyzing each step and approaching the problem one step at a time. ----------- new score: 0.7
+[2024-08-28 17:13:06,053] -  step 4, pop 4    prompt At the beginning, solve the problem step by step. ----------- new score: 0.7
+[2024-08-28 17:13:27,660] -  step 4, pop 5    prompt Initially, solve the problem systematically. ----------- new score: 0.65
+[2024-08-28 17:13:47,834] -  step 4, pop 6    prompt First, consider this thoughtfully. ----------- new score: 0.95
+[2024-08-28 17:14:11,579] -  step 4, pop 7    prompt First, think about this logically. We'll approach this mathematical problem step by step. ----------- new score: 0.75
+[2024-08-28 17:14:34,190] -  step 4, pop 8    prompt First, think about every detail thoughtfully and address this matter gradually, focusing on individual steps. ----------- new score: 0.7
+[2024-08-28 17:14:55,731] -  step 4, pop 9    prompt Begin by reflecting. ----------- new score: 0.95
+[2024-08-28 17:15:17,646] -  step 5, pop 0    prompt First, analyze this logically. ----------- new score: 0.85
+[2024-08-28 17:15:45,289] -  step 5, pop 1    prompt First, let's approach this mathematical problem step by step, thinking about it logically. ----------- new score: 0.8
+[2024-08-28 17:16:08,432] -  step 5, pop 2    prompt First and foremost, ----------- new score: 1.0
+[2024-08-28 17:16:32,393] -  step 5, pop 3    prompt To commence, analyze every step carefully and tackle this issue gradually, focusing on separate steps. ----------- new score: 0.7
+[2024-08-28 17:16:54,922] -  step 5, pop 4    prompt Initially, approach this methodically and gradually solve the question. ----------- new score: 0.5
+[2024-08-28 17:17:18,065] -  step 5, pop 5    prompt To begin with, break down the math problem into smaller parts and solve it step by step. ----------- new score: 0.8
+[2024-08-28 17:17:42,846] -  step 5, pop 6    prompt To start with, consider this rationally. ----------- new score: 0.95
+[2024-08-28 17:18:04,770] -  step 5, pop 7    prompt Initially, systematically tackle the problem. ----------- new score: 0.7
+[2024-08-28 17:18:27,494] -  step 5, pop 8    prompt First, think about every step thoroughly and address this issue gradually, focusing on individual steps. ----------- new score: 0.7
+[2024-08-28 17:18:47,666] -  step 5, pop 9    prompt First, start by thinking about the numerical problem logically. ----------- new score: 0.65
+[2024-08-28 17:19:09,683] -  step 6, pop 0    prompt First, address each step of this math problem individually. ----------- new score: 0.95
+[2024-08-28 17:19:30,163] -  step 6, pop 1    prompt In the first place, consider this logically. ----------- new score: 0.75
+[2024-08-28 17:19:52,636] -  step 6, pop 2    prompt First, reflect. ----------- new score: 0.9
+[2024-08-28 17:20:22,718] -  step 6, pop 3    prompt First, start off with considering the task at hand. ----------- new score: 0.75
+[2024-08-28 17:20:44,511] -  step 6, pop 4    prompt First off, we will break down this math problem step by step for a methodical solution. ----------- new score: 0.9
+[2024-08-28 17:21:06,831] -  step 6, pop 5    prompt To begin with, systematically solve the problem step by step. ----------- new score: 0.65
+[2024-08-28 17:21:30,794] -  step 6, pop 6    prompt In the initial phase, approach each step with thorough consideration and gradually tackle the problem, focusing on individual aspects. ----------- new score: 0.5
+[2024-08-28 17:21:53,732] -  step 6, pop 7    prompt At the outset, approach this logically. ----------- new score: 0.9
+[2024-08-28 17:22:16,046] -  step 6, pop 8    prompt First, reflect on each step thoroughly and approach this matter gradually, concentrating on individual steps. ----------- new score: 0.85
+[2024-08-28 17:22:36,740] -  step 6, pop 9    prompt To start, ----------- new score: 1.0
+[2024-08-28 17:22:58,449] -  step 7, pop 0    prompt First, starting with the mathematical problem. ----------- new score: 0.65
+[2024-08-28 17:23:19,543] -  step 7, pop 1    prompt To begin with, let’s consider this logically. ----------- new score: 0.8
+[2024-08-28 17:23:39,998] -  step 7, pop 2    prompt Initially, Let’s consider this rationally. ----------- new score: 0.6
+[2024-08-28 17:24:00,137] -  step 7, pop 3    prompt To start with, we'll approach this math task step by step. ----------- new score: 0.9
+[2024-08-28 17:24:22,008] -  step 7, pop 4    prompt At the beginning, solve the issue systematically. ----------- new score: 0.95
+[2024-08-28 17:24:42,387] -  step 7, pop 5    prompt To begin with, ----------- new score: 1.0
+[2024-08-28 17:25:04,711] -  step 7, pop 6    prompt First, logically analyze the situation. ----------- new score: 0.5
+[2024-08-28 17:25:28,878] -  step 7, pop 7    prompt Initially, consider this. ----------- new score: 0.75
+[2024-08-28 17:25:50,587] -  step 7, pop 8    prompt First, reflect on each step thoroughly and approach this matter gradually, concentrating on individual steps. ----------- new score: 0.9
+[2024-08-28 17:26:11,476] -  step 7, pop 9    prompt To start, analyze this logically. ----------- new score: 0.7

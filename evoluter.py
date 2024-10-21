@@ -405,6 +405,7 @@ class GAEvoluter(Evoluter):
                     "<prompt2>", cand_b
                 )
                 # logger.info(f"old_child: {old_prompt}, {old_score}")
+                logger.info(f"in the 389 self.population----------> {self.population}")
                 logger.info("evolution example:")
                 logger.info(request_content)
                 logger.info("parents:")

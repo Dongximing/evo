@@ -11,7 +11,7 @@ OUT_PATH=outputs/$task/eval/$llm/3-shot
 for seed in 10
 do
 mkdir -p $OUT_PATH/seed${seed}
-python eval.py \
+python ../eval.py \
     --seed $seed \
     --task $task \
     --batch-size 20 \
@@ -19,7 +19,6 @@ python eval.py \
     --llm_type $llm \
     --setting default \
     --demon 1 \
-    --output $OUT_PATH/seed${seed} \
-    --content "Let's think step by step."
+    --output $OUT_PATH/seed${seed}
 done
 done

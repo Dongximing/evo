@@ -1,7 +1,7 @@
 davinci:
   default:
     # api_type: 
-    api_key: 
+    api_key: ""
     # api_base: 
     # api_version: 
     # engine: text-davinci-003
@@ -9,7 +9,7 @@ davinci:
 turbo:
   default:
     # api_type: 
-    api_key: 
+    api_key: ""
     # api_base: 
     # api_version: 
     # engine: 

@@ -1,0 +1,4 @@
+evoluted	Provide the first step for completing the given task.	1.0
+manual	Let’s work this out in a step by step way to be sure we have the right answer.	1.0
+best score: 1.0
+average score: 1.0

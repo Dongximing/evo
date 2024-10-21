@@ -50,11 +50,6 @@ def parse_args():
     parser.add_argument('--content', type=str, default='')
     parser.add_argument('--ckpt_pop', type=str, default=None)
     parser.add_argument('--demon', type=int, default=1, help='few-shot or zero-shot', choices=[0,1])
-    parser.add_argument(
-        "--content",
-        type=str,
-        default="",
-        help="content of the prompt, used when testing single prompt",
-    )
+    parser.add_argument('--sampling_method', type=str, default="sample")
     args = parser.parse_args()
     return args

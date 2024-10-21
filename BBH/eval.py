@@ -28,7 +28,7 @@ if __name__ == "__main__":
     prompts = [args.content]
     with open(os.path.join(args.output, "acc.txt"), "a+") as f:
         for p in prompts:
-            test_acc = eval_task(
+            test_acc, _ = eval_task(
                 task=task,
                 task_prompt=task_prompt,
                 cot_prompt=p,
@@ -39,7 +39,7 @@ if __name__ == "__main__":
                 demon=args.demon,
                 **llm_config,
             )
-            dev_acc = eval_task(
+            dev_acc,_ = eval_task(
                 task=task,
                 task_prompt=task_prompt,
                 cot_prompt=p,
