@@ -8,7 +8,7 @@ if __name__ == "__main__":
     set_seed(args.seed)
 
     client = None
-    llm_config = llm_init("/Users/ximing/Desktop/EvoPrompt/BBH/auth.yaml", args.llm_type, args.setting)
+    llm_config = llm_init("/mnt/hdd-data/shaowei/data_selection/evo/BBH/auth.yaml", args.llm_type, args.setting)
     if args.evo_mode == 'de':
         from evoluter import DEEvoluter
 
