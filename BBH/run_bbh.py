@@ -94,12 +94,12 @@ def create_request(custom_id, user_message):
 
         },
     }
-def inference_openai(sentences):
+def inference_openai(sentences,seed):
     import json
 
     requests = [create_request(f"request-{i + 1}", msg) for i, msg in enumerate(sentences)]
 
-    file_path = 'api_requests.jsonl'
+    file_path = f'api_requests_{seed}.jsonl'
 
     # Write each request to the .jsonl file
     with open(file_path, 'w') as file:
@@ -142,7 +142,7 @@ def inference_openai(sentences):
             time.sleep(10)  # wait for 10 seconds before checking again
 
     file_response = client.files.content(status.output_file_id)
-    response_file = "response_file.jsonl"
+    response_file = f"response_file_{seed}.jsonl"
     with open(response_file, 'w') as file:
             file.write(file_response.text)
     import json
@@ -150,7 +150,7 @@ def inference_openai(sentences):
     list_top20_logprobs = []
     encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
     all_data = []
-    with open('response_file.jsonl', 'r') as file:
+    with open(f'response_file_{seed}.jsonl', 'r') as file:
         for line in file:
             data = json.loads(line)
             all_data.append(data)
@@ -187,16 +187,16 @@ def inference_openai(sentences):
     return list_top20_logprobs, output_cost,responses
 
 
-def first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs):
+def first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,seed,**kwargs):
     mode = 'multiple_choice' if task in MULTIPLE_CHOICE_TASKS else 'free_form'
     prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
     print(prompt_qs)
-    list_top20_logprobs, output_cost,responses = inference_openai(prompt_qs)
+    list_top20_logprobs, output_cost,responses = inference_openai(prompt_qs,seed)
     return list_top20_logprobs, output_cost,responses,answers
 
 
 
-def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon, anchor, discrete, **kwargs):
+def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon, anchor, discrete, seed, **kwargs):
     # for task in tasks:
     # print('Testing %s ...' % task)
     correct = 0
@@ -210,7 +210,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
         # prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
         # print("BBH/run_bbh.py:195",len(prompt_qs),len(questions),len(answers))
 
-        list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs)
+        list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon,seed,**kwargs)
         logger.info(f"BBH/run_bbh.py:215   {len(list_top20_logprobs)} .....{len(responses)}.......{len(answers)}")
         for index, list_top20_logprob in enumerate(list_top20_logprobs):
             #logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}........all the data.{eval_data[index]}")
