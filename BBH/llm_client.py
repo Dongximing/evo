@@ -12,9 +12,8 @@ import time
 from utils import read_yaml_file, batchify
 from openai import OpenAI
 import os
-KEY = ""
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY",
-                                       KEY))
+KEY = os.environ["OPENAI_API_KEY"]
+client = OpenAI(api_key=KEY)
 
 def extract_seconds(text, retried=5):
     words = text.split()
@@ -79,6 +78,7 @@ def turbo_query(request_data, **kwargs):
                         {"role": "user", "content": request_data},
                     ],
                 logprobs=True,
+                temperature=0.1
                 )
             # print("\n\n\n")
             # print("-"*50)
@@ -191,6 +191,7 @@ def llm_query(data, client, type, task, **config):
                             {"role": "user", "content": data},
                         ],
                         logprobs=True,
+                        temperature=0.1
                     )
                     result = response.choices[0].message.content
 

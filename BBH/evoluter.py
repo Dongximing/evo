@@ -90,7 +90,7 @@ class Evoluter:
         self.client, self.llm_config = client, llm_config
         self.public_out_path = args.output
         self.task = args.task
-        self.task_prompt = open("/Users/ximing/Desktop/EvoPrompt/BBH/lib_prompt/%s.txt" % self.task, "r").read()
+        self.task_prompt = open("/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/lib_prompt/%s.txt" % self.task, "r").read()
 
         self.logger = logger = setup_log(
             os.path.join(self.public_out_path, f"evol.log")
@@ -101,12 +101,12 @@ class Evoluter:
         self.args = args
 
         self.out_path = os.path.join(self.public_out_path, f"dev_result.txt")
-        self.task_data = json.load(open("/Users/ximing/Desktop/EvoPrompt/BBH/data/%s.json" % args.task))["examples"]
+        self.task_data = json.load(open("/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/%s.json" % args.task))["examples"]
         # self.dev_data = random.sample(self.task_data, args.sample_num)
         # print(self.dev_data)
 
-        dev_data = json.load(open(f"/Users/ximing/Desktop/EvoPrompt/BBH/data/{args.task}_train_data.json"))
-        self.test_data = json.load(open(f"/Users/ximing/Desktop/EvoPrompt/BBH/data/{args.task}_test_data.json"))
+        dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/{args.task}_train_data.json"))
+        self.test_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/{args.task}_test_data.json"))
 
         if self.sampling_method == "anchor_half_sampling":
             logger.info(
@@ -114,6 +114,17 @@ class Evoluter:
             )
 
             self.dev_data = dev_data
+        elif self.sampling_method == "anchor_concatenate":
+            logger.info(
+                "-----concatenate method---------"
+            )
+            self.dev_data = dev_data
+        elif self.sampling_method == "sampling_dynamic":
+            logger.info(
+                "-----there is a sampling_dynamic method---------"
+            )
+            self.dev_data = random.sample(dev_data, 100)
+
 
         elif self.sampling_method == "cluster":
             logger.info(
@@ -228,7 +239,7 @@ class Evoluter:
                 print("BBH/evoluter.py:228",len(pop))
                 print("BBH/evoluter.py:229",len(self.dev_data))
                 for prompt in pop:
-                    eval_res, _ = self.eval_func(cot_prompt=[prompt], eval_data=self.dev_data,anchor=True)
+                    eval_res, _ = self.eval_func(cot_prompt=[prompt], eval_data=self.dev_data,anchor=True,discrete= False)
                     self.evaluated_prompts[prompt] = eval_res
                     topk_population.append((eval_res, prompt))
                 topk_population.sort(reverse=True, key=lambda x: x[0])
@@ -316,7 +327,7 @@ class Evoluter:
         with open(os.path.join(out_path, "step0_pop_para.txt"), "w") as wf:
             for i in self.population:
                 if i not in self.evaluated_prompts:
-                    init_scores, _ = self.eval_func(cot_prompt=i, eval_data=self.dev_data,anchor=False)
+                    init_scores, _ = self.eval_func(cot_prompt=[i], eval_data=self.dev_data,anchor=True,discrete=False)
                     self.evaluated_prompts[i] = init_scores
                 scores = self.evaluated_prompts[i]
                 total_score += scores
@@ -342,14 +353,12 @@ class Evoluter:
         raise NotImplementedError
 
     def calculate_anchor_point(self, populations):
-        result, score = self.eval_func(cot_prompt=populations, eval_data=self.dev_data,anchor=True)
+        result, score = self.eval_func(cot_prompt=populations, eval_data=self.dev_data,anchor=True,discrete=False)
         print(score)
         print(type(score))
         a, b = score.shape
         c = a*b//len(self.dev_data)
         accumulated_array = dynamic_reshape(score,(len(self.dev_data),c),len(self.dev_data),b)
-
-        print(accumulated_array)
         return accumulated_array
 
     def getting_dataset_from_anchor_point(self):
@@ -390,7 +399,7 @@ class Evoluter:
                     if best == pop_scores[i]:
                         test_mark = pop_marks[i]
                         test_score, _ = self.eval_func(
-                            cot_prompt=[test_prompt], eval_data=self.test_data, anchor=True
+                            cot_prompt=[test_prompt], eval_data=self.test_data, anchor=False, discrete=False
                         )
                         dev_score = self.evaluated_prompts[test_prompt]
                         all_score = (
@@ -405,7 +414,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'evoluted' and evoluted == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = False
+                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = False, discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -422,7 +431,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'manual' and manual == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data,anchor = False
+                        cot_prompt=test_prompt, eval_data=self.test_data,anchor = False,discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -438,7 +447,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'para' and para == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = False
+                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = False,discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -481,11 +490,18 @@ class GAEvoluter(Evoluter):
 
         for step in range(cur_budget + 1, args.budget):
 
-            if step == 0 and self.sampling_method == "anchor_half_sampling":
-                dev_data = json.load(open(f"/Users/ximing/Desktop/EvoPrompt/BBH/data/{args.task}_train_data.json"))
+            if step == 0 and self.sampling_method.startswith("anchor"):
+                dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/{args.task}_train_data.json"))
                 self.dev_data = dev_data
-                training_score = self.calculate_anchor_point(self.population)
-
+                if os.path.exists("training_score.npy"):
+                    training_score = np.load("training_score.npy")
+                else:
+                    training_score = self.calculate_anchor_point(self.population)
+                    np.save('array_file.npy', training_score)
+                if self.sampling_method == "anchor_concatenate":
+                    embeddings = [item['embedding'] for item in dev_data['data']]
+                    embeddings_array = np.array(embeddings)
+                    training_score = np.concatenate((embeddings_array,training_score), axis=1)
                 logger.info(f"training_score----------->{training_score.shape}")
                 filtered_data = training_score
                 logger.info("**" * 50)
@@ -538,8 +554,35 @@ class GAEvoluter(Evoluter):
                 self.dev_data = [self.dev_data[i] for i in anchor_points]
                 self.evaluated_prompts = {}
                 for i in self.population:
-                    de_eval_res, _ = self.eval_func(cot_prompt=i, eval_data=self.dev_data, anchor=False)
+                    de_eval_res, _ = self.eval_func(cot_prompt=[i], eval_data=self.dev_data, anchor=True,discrete=False)
                     self.evaluated_prompts[i] = de_eval_res
+            if step == 0 and self.sampling_method.startswith("sampling_dynamic"):
+                training_score = self.calculate_anchor_point(self.population)
+                logger.info(f"training_score----------->{training_score.shape}")
+                filtered_data = training_score
+                logger.info("**" * 50)
+                trials = 5
+                random_seed = 10
+                anchor_point = 20
+                kmeans_models = [
+                    KMeans(n_clusters=anchor_point, random_state=1000 * t + random_seed, n_init="auto").fit(
+                        filtered_data) for t in range(trials)]
+                kmeans = kmeans_models[np.argmin([m.inertia_ for m in kmeans_models])]
+
+                # Calculating anchor points
+                anchor_points = pairwise_distances(kmeans.cluster_centers_, filtered_data, metric='euclidean').argmin(
+                    axis=1)
+
+                logger.info(f" anchor_points ---------------------->{anchor_points}")
+
+                self.dev_data = [self.dev_data[i] for i in anchor_points]
+                self.evaluated_prompts = {}
+                for i in self.population:
+                    de_eval_res, _ = self.eval_func(cot_prompt=[i], eval_data=self.dev_data, anchor=True,
+                                                    discrete=False)
+                    self.evaluated_prompts[i] = de_eval_res
+
+
 
             total_score = 0
             best_score = 0
@@ -594,14 +637,14 @@ class GAEvoluter(Evoluter):
                     data=request_content,
                     type=args.llm_type,
                     task=False,
-                    temperature=0.5,
+                    temperature=0.7,
                     **self.llm_config,
                 )
 
                 child_prompt = get_final_prompt(child_prompt)
                 logger.info(f"step {step}, pop {j} original child prompt: {child_prompt}")
                 separate_candidate.append(child_prompt)
-                de_eval_res, _ = self.eval_func(cot_prompt=[child_prompt], eval_data=self.dev_data,anchor=True)
+                de_eval_res, _ = self.eval_func(cot_prompt=[child_prompt], eval_data=self.dev_data,anchor=True,discrete=False)
                 logger.info(f" step {step}, pop {j}    prompt {child_prompt} ----------- new score: {de_eval_res}")
                 self.prompts2mark[child_prompt] = "evoluted"
 
@@ -727,7 +770,7 @@ class ParaEvoluter(Evoluter):
         # initial population evaluation
         if args.initial != "ckpt":
             for i, prompt in enumerate(self.init_population):
-                score, _ = self.eval_func(cot_prompt=prompt,anchor=False)
+                score, _ = self.eval_func(cot_prompt=[prompt],anchor=True,discrete=False)
                 self.evaluated_prompts[prompt] = score
                 self.logger.info(f"{self.prompts2mark[prompt]}: {prompt}, {score}")
                 heapq.heappush(topk_heap, (score, prompt))
@@ -749,7 +792,7 @@ class ParaEvoluter(Evoluter):
             )
             for i, prompt in enumerate(paraphrased_prompts):
                 self.logger.info(f"step: {step}, prompt: {prompt}")
-                new_score, _ = self.eval_func(cot_prompt=prompt,anchor=False)
+                new_score, _ = self.eval_func(cot_prompt=[prompt],anchor=True,discrete=False)
                 self.prompts2mark[prompt] = "para"
                 self.logger.info(f"paraphrased: {prompt}, {new_score}")
                 self.logger.info(

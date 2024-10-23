@@ -12,8 +12,7 @@ from llm_client import turbo_query, davinci_query
 import tiktoken
 from openai import OpenAI
 import os
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY",
-                                       ""))
+client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 MULTIPLE_CHOICE_TASKS = [
         'temporal_sequences', 'disambiguation_qa', 'date_understanding', 'tracking_shuffled_objects_three_objects', 'penguins_in_a_table', 
         'geometric_shapes', 'snarks', 'ruin_names', 'tracking_shuffled_objects_seven_objects', 'tracking_shuffled_objects_five_objects', 
@@ -37,7 +36,7 @@ def create_dataset(mode, task_prompt, cot_prompt, eval_data,demon=1):
     answers= []
     # print("BBH/run_bbh.py:38",eval_data)
     # print("BBH/run_bbh.py:39", cot_prompt)
-    # print("BBH/run_bbh.py:40",task_prompt)
+
     for q_ in eval_data:
         task_prompt = task_prompt.replace('<prompt>', cot_prompt)
         if demon: 
@@ -58,9 +57,10 @@ def create_parallel_dataset(mode, task_prompt, cot_prompts, eval_data,demon=1):
     questions = []
     prompt_qs = []
     answers= []
-    print("BBH/run_bbh.py:38",eval_data)
-    print("BBH/run_bbh.py:39", cot_prompts)
-    print("BBH/run_bbh.py:40",task_prompt)
+    # print("BBH/run_bbh.py:38",eval_data)
+    # print("BBH/run_bbh.py:39", cot_prompts)
+    # print("BBH/run_bbh.py:40",task_prompt)
+    # print("BBH/run_bbh.py:64", eval_data)
     for cot_prompt in cot_prompts:
         for q_ in eval_data:
             task_prompt = task_prompt.replace('<prompt>', cot_prompt)
@@ -77,6 +77,7 @@ def create_parallel_dataset(mode, task_prompt, cot_prompts, eval_data,demon=1):
             elif mode == 'free_form':
                 a = q_['target']
             answers.append(a)
+    # print(f"answers ---------------------------------->{answers}")
     return prompt_qs, questions,answers
 def create_request(custom_id, user_message):
     return {
@@ -153,14 +154,14 @@ def inference_openai(sentences):
         for line in file:
             data = json.loads(line)
             all_data.append(data)
-    all_data.sort(key=lambda x: x['custom_id'])
+    # print("BBH/run_bbh.py:159",all_data)
+    # all_data.sort(key=lambda x: x['custom_id'])
+    # print("BBH/run_bbh.py:161", all_data)
     responses = []
-    for  data in all_data:
+    for data in all_data:
         top_twenty_logprobs = data["response"]["body"]["choices"][0]["logprobs"]
         response = data["response"]["body"]["choices"][0]["message"]["content"]
         responses.append(response)
-        # print(f"\nResponse: {response}")
-        # print(f"\nTop 20 logprobs: {top_twenty_logprobs}")
         token_dict = {
             data["token"]: {tp["token"]: tp["logprob"] for tp in data["top_logprobs"]}
             for data in top_twenty_logprobs["content"]
@@ -168,6 +169,21 @@ def inference_openai(sentences):
         output_cost += len(encoding.encode(response))
 
         list_top20_logprobs.append(token_dict)
+    if os.path.exists(file_path):
+        # Delete the file
+        os.remove(file_path)
+        print("File deleted successfully.")
+    else:
+        # File does not exist
+        print("File not found.")
+    if os.path.exists(response_file):
+        # Delete the file
+        os.remove(response_file)
+        print("File deleted successfully.")
+    else:
+        # File does not exist
+        print("File not found.")
+
     return list_top20_logprobs, output_cost,responses
 
 
@@ -176,7 +192,7 @@ def first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, mod
     prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
     print(prompt_qs)
     list_top20_logprobs, output_cost,responses = inference_openai(prompt_qs)
-    return list_top20_logprobs, output_cost,responses
+    return list_top20_logprobs, output_cost,responses,answers
 
 
 
@@ -191,11 +207,13 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
     score = np.empty((0, 3))
     if anchor:
 
-        prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
-        print("BBH/run_bbh.py:195",len(prompt_qs),len(questions),len(answers))
+        # prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
+        # print("BBH/run_bbh.py:195",len(prompt_qs),len(questions),len(answers))
 
-        list_top20_logprobs, output_cost, responses =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs)
+        list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,**kwargs)
+        logger.info(f"BBH/run_bbh.py:215   {len(list_top20_logprobs)} .....{len(responses)}.......{len(answers)}")
         for index, list_top20_logprob in enumerate(list_top20_logprobs):
+            #logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}........all the data.{eval_data[index]}")
             ans_ = extract_ans(responses[index], mode)
             logit_matrix = np.zeros(3)
             if ans_ == answers[index]:
@@ -205,7 +223,17 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                             if answers[index] == "yes":
                                 logit_matrix[0] = list_top20_logprob[item][item]
                             else:
-                                logit_matrix[1] = list_top20_logprob[item][item]
+                                try:
+                                    logit_matrix[1] = list_top20_logprob[item][item]  # Attempt to assign the value
+                                     # Return the updated matrix if successful
+                                except IndexError:
+                                    # If there is an index error, return 0
+                                    logit_matrix[1] = 0
+                                except Exception as e:
+                                    # Optional: handle other exceptions if necessary
+                                    print(f"An unexpected error occurred: {e}")
+                                    logit_matrix[1] = 0
+
                         else:
                             if answers[index] == "yes":
                                 logit_matrix[0] = 1
@@ -217,7 +245,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
         accuracy = correct / len(eval_data)
         return accuracy, score
     prompt_qs, questions, answers = create_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
-    print("BBH/run_bbh.py:212",prompt_qs)
+    # print("BBH/run_bbh.py:212",prompt_qs)
     if 'turbo' in model_index:
         for i in tqdm(range(len(prompt_qs))):
             prompt_q = prompt_qs[i]
