@@ -171,7 +171,7 @@ class Evoluter:
             model_index=model,
             logger=logger,
             demon=args.demon,
-            seed = args.seed
+            seed = args.seed,
             **llm_config,
         )
 
