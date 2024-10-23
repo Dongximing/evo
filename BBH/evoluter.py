@@ -90,7 +90,7 @@ class Evoluter:
         self.client, self.llm_config = client, llm_config
         self.public_out_path = args.output
         self.task = args.task
-        self.task_prompt = open("/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/lib_prompt/%s.txt" % self.task, "r").read()
+        self.task_prompt = open("/mnt/hdd-data/shaowei/data_selection/evo/BBH/lib_prompt/%s.txt" % self.task, "r").read()
 
         self.logger = logger = setup_log(
             os.path.join(self.public_out_path, f"evol.log")
@@ -101,12 +101,12 @@ class Evoluter:
         self.args = args
 
         self.out_path = os.path.join(self.public_out_path, f"dev_result.txt")
-        self.task_data = json.load(open("/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/%s.json" % args.task))["examples"]
+        self.task_data = json.load(open("/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/%s.json" % args.task))["examples"]
         # self.dev_data = random.sample(self.task_data, args.sample_num)
         # print(self.dev_data)
 
-        dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/{args.task}_train_data.json"))
-        self.test_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/{args.task}_test_data.json"))
+        dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_train_data.json"))
+        self.test_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_test_data.json"))
 
         if self.sampling_method == "anchor_half_sampling":
             logger.info(
