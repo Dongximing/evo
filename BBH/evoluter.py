@@ -123,7 +123,7 @@ class Evoluter:
             logger.info(
                 "-----there is a sampling_dynamic method---------"
             )
-            self.dev_data = random.sample(dev_data, 100)
+            self.dev_data = random.sample(dev_data, 50)
 
 
         elif self.sampling_method == "cluster":
