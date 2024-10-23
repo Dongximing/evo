@@ -467,7 +467,7 @@ class GAEvoluter(Evoluter):
     def __init__(self, args, llm_config, client, sampling_method):
         super(GAEvoluter, self).__init__(args, llm_config=llm_config, client=client, sampling_method=sampling_method)
         self.template = templates_2["sim"]
-        self.seed = args.get("seed")
+
 
     def evolute(self):
         logger = self.logger
