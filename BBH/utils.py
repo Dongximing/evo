@@ -63,7 +63,7 @@ def read_lines(file_, sample_indices=None):
                     ret.append(line.rstrip())
         return ret
     else:
-        with open("/Users/ximing/Desktop/EvoPrompt/BBH/prompts.txt", 'r') as f:
+        with open("/mnt/hdd-data/shaowei/data_selection/evo/BBH/prompts.txt", 'r') as f:
             lines = f.readlines()
         return [line.rstrip() for line in lines]
 
