@@ -493,7 +493,7 @@ class GAEvoluter(Evoluter):
         for step in range(cur_budget + 1, args.budget):
 
             if step == 0 and self.sampling_method.startswith("anchor"):
-                dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBHBBH/data/{args.task}_train_data.json"))
+                dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_train_data.json"))
                 self.dev_data = dev_data
                 if os.path.exists("training_score.npy"):
                     training_score = np.load("training_score.npy")
