@@ -501,7 +501,7 @@ class GAEvoluter(Evoluter):
                     training_score = self.calculate_anchor_point(self.population)
                     np.save('array_file.npy', training_score)
                 if self.sampling_method == "anchor_concatenate":
-                    embeddings = [item['embedding'] for item in dev_data['data']]
+                    embeddings = [item['embedding'] for item in dev_data]
                     embeddings_array = np.array(embeddings)
                     training_score = np.concatenate((embeddings_array,training_score), axis=1)
                 logger.info(f"training_score----------->{training_score.shape}")
