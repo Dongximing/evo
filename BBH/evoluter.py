@@ -400,7 +400,7 @@ class Evoluter:
                     if best == pop_scores[i]:
                         test_mark = pop_marks[i]
                         test_score, _ = self.eval_func(
-                            cot_prompt=[test_prompt], eval_data=self.test_data, anchor=False, discrete=False
+                            cot_prompt=test_prompt, eval_data=self.test_data, anchor=False, discrete=False
                         )
                         dev_score = self.evaluated_prompts[test_prompt]
                         all_score = (
