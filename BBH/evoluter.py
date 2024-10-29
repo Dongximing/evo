@@ -150,13 +150,16 @@ class Evoluter:
                 "-----there is a anchor method---------"
             )
             self.dev_data = random.sample(dev_data, args.sample_num)
+        elif self.sampling_method == "full_size_baseline":
+            self.dev_data = dev_data
         else:
             logger.info(
                 "-----there is a half_half method---------"
             )
 
             self.dev_data = random.sample(dev_data, len(dev_data))
-            pass
+
+
 
         base2_int = functools.partial(int, base=2)
         a = base2_int("10")
