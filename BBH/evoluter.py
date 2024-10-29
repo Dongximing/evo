@@ -484,10 +484,8 @@ class GAEvoluter(Evoluter):
 
         logger.info(f"init  self.evaluated_prompts{self.evaluated_prompts}")
         logger.info(f"cur_budget------------------->{cur_budget}")
-        logger.info("start --------------------------------mmmmmmmmmm--------->")
         logger.info(f"cur_budget------------------->{args.budget}")
         logger.info(f"init  self.population{self.population}")
-        logger.info("start --------------------------------mmmmmmmmmm--------->")
         total_candidate = []
         the_best_ones = []
         find_max = False
@@ -544,6 +542,9 @@ class GAEvoluter(Evoluter):
                 #  'Is the following sentence plausible? "Sam Darnold scored on the power play in the Stanley Cup."',
                 #  'Is the following sentence plausible? "T.Y. Hilton threw a touchdown in the AFC divisional round."']
                 # logger.info(f"self.dev_data in 185  {input_list}")
+                if self.sampling_method.startswith("anchor_half_half"):
+                    anchor_point =10
+
 
                 kmeans_models = [
                     KMeans(n_clusters=anchor_point, random_state=1000 * t + random_seed, n_init="auto").fit(
@@ -556,7 +557,20 @@ class GAEvoluter(Evoluter):
 
                 logger.info(f" anchor_points ---------------------->{anchor_points}")
 
+
                 self.dev_data = [self.dev_data[i] for i in anchor_points]
+
+                if self.sampling_method.startswith("anchor_half_half"):
+                    selected_set = set(tuple(d.items()) for d in self.dev_data)
+                    all_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_train_data.json"))
+                    remaining_data = [sample for sample in all_data if tuple(sample.items()) not in selected_set]
+                    labels = set(sample['cluster_label'] for sample in remaining_data)
+                    new_samples = []
+                    for label in labels:
+                        label_samples = [sample for sample in remaining_data if sample['cluster_label'] == label]
+                        new_samples.extend(random.sample(label_samples, min(2, len(label_samples))))
+                    self.dev_data.extend(new_samples)
+
                 self.evaluated_prompts = {}
                 for i in self.population:
                     de_eval_res, _ = self.eval_func(cot_prompt=[i], eval_data=self.dev_data, anchor=True,discrete=False)
