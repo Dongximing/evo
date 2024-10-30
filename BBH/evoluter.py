@@ -561,9 +561,9 @@ class GAEvoluter(Evoluter):
                 self.dev_data = [self.dev_data[i] for i in anchor_points]
 
                 if self.sampling_method.startswith("anchor_half_half"):
-                    selected_set = set(tuple(d.items()) for d in self.dev_data)
+
                     all_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_train_data.json"))
-                    remaining_data = [sample for sample in all_data if tuple(sample.items()) not in selected_set]
+                    remaining_data = [sample for sample in all_data if sample not in self.dev_data]
                     labels = set(sample['cluster_label'] for sample in remaining_data)
                     new_samples = []
                     for label in labels:
