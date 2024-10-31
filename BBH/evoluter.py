@@ -496,8 +496,8 @@ class GAEvoluter(Evoluter):
             if step == 0 and self.sampling_method.startswith("anchor"):
                 dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_train_data.json"))
                 self.dev_data = dev_data
-                if os.path.exists("array_file.npy"):
-                    training_score = np.load("array_file.npy")
+                if os.path.exists("array_fle.npy"):
+                    training_score = np.load("array_fle.npy")
                 else:
                     training_score = self.calculate_anchor_point(self.population)
                     np.save('array_file.npy', training_score)
