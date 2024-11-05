@@ -7,7 +7,7 @@ client = OpenAI(api_key='')
 
 def get_embedding(text, model):
     text = text.replace("\n", "")
-    text = text.replace("Is the following sentence plausible? ", "")
+    text = text.replace("If you follow these instructions, do you return to the starting point? ", "")
     print(text)
     return client.embeddings.create(input=text, model=model, dimensions=100).data[0].embedding
 
@@ -15,6 +15,7 @@ def get_embedding(text, model):
 
 def generate_sentence_embedding(task):
     dataset = json.load(open("/Users/ximing/Desktop/EvoPrompt/BBH/data/%s.json" % task))["examples"]
+    print(len(dataset))
     training_dataset = dataset[:-100]
     testing_dataset = dataset[-100:]
     for ele in training_dataset:
@@ -30,11 +31,11 @@ def generate_sentence_embedding(task):
 
     with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_train_data.json', 'w') as f:
         json.dump(training_dataset, f, indent=4)
-    # with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_test_data.json', 'w') as f:
-    #     json.dump(testing_dataset, f, indent=4)
+    with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_test_data.json', 'w') as f:
+        json.dump(testing_dataset, f, indent=4)
 
 
-generate_sentence_embedding(task="sports_understanding")
+generate_sentence_embedding(task="navigate")
 
 
 
