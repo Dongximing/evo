@@ -134,12 +134,13 @@ class Evoluter:
             sampled_data = rate_clustering(df, 42, args.sample_num)
             self.dev_data = sampled_data.to_dict(orient='records')
 
-        elif self.sampling_method == "anchor_half_full":
+        elif self.sampling_method == "half_half":
             logger.info(
                 "-----there is a half_half method---------"
             )
             df = pd.DataFrame(dev_data)
-            sampled_data = half_half(seed=42, data=df)
+            seed = random.randint(1,100)
+            sampled_data = half_half(seed=seed, data=df)
             self.dev_data = sampled_data.to_dict(orient='records')
         elif self.sampling_method == "paper_method":
             pass
