@@ -1,0 +1,402 @@
+[
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You can come to my house for dinner?' Speaker 2: 'I'm hiding out.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Does he have problems with his acconting project?' Speaker 2: 'He has been struggling with that from day one.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you going to watch the game tomorrow?' Speaker 2: 'Without a doubt!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you tired?' Speaker 2: 'I've been burning the candle at both ends all week.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you have any ketchup left?' Speaker 2: 'We are swimming in it.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'But do you think next time we could go to the same game?' Speaker 2: 'No problem.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'And I put my arm around you. I want to hold you, okay?' Speaker 2: 'You're too ugly.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are the flame androids deployed?' Speaker 2: 'All twelve.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You wanna do this right, don't you?' Speaker 2: 'What are you talking about?'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Anything new?' Speaker 2: 'The usual gas.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is she a chatterbox?' Speaker 2: 'She never stops talking.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You think it's so easy?' Speaker 2: 'Easy enough for you.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You don't look normal. Are you all right?' Speaker 2: 'I have a headache.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Have you had a chance to wear your new shirt yet?' Speaker 2: 'I have been trying to exchange it for a larger size.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can I help you with that?' Speaker 2: 'Why thank you!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is he naughty?' Speaker 2: 'Boys will be boys.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you have an answer?' Speaker 2: 'Absolutely.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is it fun to play with Katie?' Speaker 2: 'She's more fun than a barrel of monkeys!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Let's have a pizza for dinner.' Speaker 2: 'I am on diet.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did you check everywhere?' Speaker 2: 'I checked every nook and cranny.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you taking this the road to med school?' Speaker 2: 'I'm going to try.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'But you're troubled... aren't you?' Speaker 2: 'That's because you keep reminding me.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is he honest?' Speaker 2: 'He is an open book.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Isn't this great?' Speaker 2: 'Delightful.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'I've never seen a human this close before. Oh... he's very handsome, isn't he?' Speaker 2: 'I dunno, he looks kinda hairy and slobbery to me.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did Jeffrey consider Jim?' Speaker 2: 'Jeffrey gave him the cold shoulder.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you still have the gun?' Speaker 2: 'You told me to give it back.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'I thought you said this was a difficult problem?' Speaker 2: 'It's as easy as pie.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did you bring your blue and yellow sweater for me to wear to the game today? You know I like to wear school colours at the games.' Speaker 2: 'Oh! I knew I forgot something at home.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'It does what you tell it?' Speaker 2: 'Well, sort of.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is it true that you mother has cancer?' Speaker 2: 'She has been sick for three months.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Will she scold you?' Speaker 2: 'She is going to kill me.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you mean the girl by the fire? ' Speaker 2: 'The girl with a torch.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are there any more cookies?' Speaker 2: 'All gone.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you working hard?' Speaker 2: 'I have been burning the midnight oil.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'This is large. Will this suit her?' Speaker 2: 'She's as thin as a toothpick.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did the Health Minister track all the patients?' Speaker 2: 'The Health Minister tracked some of the patients.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Will they fire him?' Speaker 2: 'His days are numbered.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'What, scared of heights? ' Speaker 2: ' I dunno, man. After what happened to Johnny Gobs.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do they close for the winter?' Speaker 2: 'They're open year round.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you gonna marry Lucy?' Speaker 2: 'Are you out of your gourd?'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did you make this box?' Speaker 2: 'With my own two hands.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you guys going to win?' Speaker 2: 'You can bet on it.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is the Pantheon even a church?' Speaker 2: 'Oldest Catholic church in Rome!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Any luck getting me replaced?' Speaker 2: 'Is there anyone in this command that you don't either drink or play softball with?'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you think he has a chance to win?' Speaker 2: 'He doesn't have a ghost of a chance.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'So he's okay?' Speaker 2: 'Uh... not exactly.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can he feel it if I pet him?' Speaker 2: 'I guess.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can you pitch?' Speaker 2: 'I'm not bad.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Was he happy?' Speaker 2: 'Was on cloud nine.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You want answers?' Speaker 2: 'I think I'm entitled to them.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you want a cigar, father? ' Speaker 2: 'They're very bad for you.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you following me?' Speaker 2: 'I'll tell you why.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Will they break this contract?' Speaker 2: 'This contract is as solid as the ground we stand on.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you want a flashlight?' Speaker 2: 'That's okay. I'll be fine.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Should I be careful?' Speaker 2: 'I want you home all in one piece.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is your helper old?' Speaker 2: 'She's as old as the hills.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you a shiftless dreamer?' Speaker 2: 'Not anymore.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Exactly the way it was?' Speaker 2: 'Down to the last slime-covered toadstool.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You mean beside Fred?' Speaker 2: 'I mean including Fred.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is that a big book?' Speaker 2: 'That book is a real doorstopper.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Kids? Are they okay?' Speaker 2: 'They're alright, baby.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You stole that doll, didn't you?' Speaker 2: 'Well, i-it looked just like you.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Winifred, did I say that I was going to take the children to the bank?' Speaker 2: 'It certainly sounded that way, dear.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can you see the spot?' Speaker 2: 'It is as bright as a button.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can I put some music on? It helps me to relax while I am studying.' Speaker 2: 'I am having a hard time concentrating on this chapter as it is.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did you wear a jeans for the meeting?' Speaker 2: 'They wore jeans, which made me stand out like a sore thumb.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is that a big turkey?' Speaker 2: 'That turkey could feed an army!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Does she eat a lot?' Speaker 2: 'She eats like a bird.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is she tall?' Speaker 2: 'She's as tall as a beanpole.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'In your opinion, was private Santiago a good marine?' Speaker 2: 'I'd say he was about average.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You want me to come out there and play private eye?' Speaker 2: 'Consider it.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'They've found me! They're after you?' Speaker 2: 'My father must have sent them.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you a morning person?' Speaker 2: 'I'm more of a night owl.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Any sign?' Speaker 2: 'Something's going to happen out there. I can feel it.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Have you ever been to Corto Maltese?' Speaker 2: 'Not since the shooting started.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did you go to the movies last night?' Speaker 2: 'I had to study last night.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you feeling, alright?' Speaker 2: 'I'm afraid.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Let's have a dance then, shall me?' Speaker 2: 'Don't do that!'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you think he did the theft?' Speaker 2: 'He is as innocent as a lamb.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Do you think we need to pursue an aggressive approach in order to remain competitive in the global market?' Speaker 2: 'I don't believe we should get involved in the cut-throat competition as they do.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Special occasion?' Speaker 2: 'I don't know. I guess so.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you all right?' Speaker 2: 'Perfect! Never been better.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you still working on that same painting?' Speaker 2: 'Hey! Rome was not built in one day!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is this really the best time to talk?' Speaker 2: 'Well, so far...'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Good evening, George. Is anything the matter?' Speaker 2: 'I'm afraid there is.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Are you sad about losing your job?' Speaker 2: 'It turned out to be a blessing in disguise.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can you drive that far?' Speaker 2: 'Can fish swim?'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is she still out there?' Speaker 2: 'You know she hates the cave, Grug.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Can you come to work today?' Speaker 2: 'I'm down with the flu.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Was all the proposals good?' Speaker 2: 'Only one made the cut.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Does he love his little girl?' Speaker 2: 'She's the apple of his eye.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Did you like the show?' Speaker 2: 'To me, it's like watching grass grow.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Well, now that don't seem likely, does it?' Speaker 2: 'It's true.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'You want me to drink this whole thing?' Speaker 2: 'Down the hatch!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is there anything wrong with her?' Speaker 2: 'Oh, she's just pretending.'\nOptions:\n- Yes\n- No",
+        "target": "No"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is your boss giving you extra work?' Speaker 2: 'I have to draw the line somewhere!'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is the bangle clean now?' Speaker 2: 'It is as shiny as a new pin'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'So is this the best brand?' Speaker 2: 'Pediatricians recommend this.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    },
+    {
+        "input": "Does Speaker 2's answer mean yes or no? Speaker 1: 'Is it too risky of an investment?' Speaker 2: 'I think you're playing with fire.'\nOptions:\n- Yes\n- No",
+        "target": "Yes"
+    }
+]
