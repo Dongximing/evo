@@ -1,0 +1,1002 @@
+[
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Muslims and Croats endorsed independence by 99.4 percent, while the Serbs boycotted a vote their leaders said was illegal. Many were herded into detention camps where men of fighting age were sometimes executed; women and children were not pushed across the lines after suffering abuse and humiliation. \nSentence 2: Men of fighting age suffered abuse and humiliation.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1617",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Muslims and Croats endorsed independence by 99.4 percent, while the Serbs boycotted a vote their leaders said was illegal. Many were herded into detention camps where men of fighting age were sometimes executed; women and children were pushed across the lines after suffering abuse and humiliation. \nSentence 2: Men of fighting age suffered abuse and humiliation.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1617",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Muslims and Croats endorsed independence by 99.4 percent, while the Serbs boycotted a vote their leaders said was illegal. Many were herded into detention camps where men of fighting age were sometimes executed; women and children were pushed across the lines after suffering abuse and humiliation. \nSentence 2: Women and children suffered abuse and humiliation.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1617",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Don't tell me you started a tech firm here before us. Lily doesn't the moment play out before looking over her shoulder. \nSentence 2: Lily looks over her shoulder.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1631",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Don't tell me you started a tech firm here before us. Lily lets the moment play out before looking over her shoulder. \nSentence 2: Lily looks over her shoulder.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1631",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Don't tell me you started a tech firm here before us. Lily doesn't let the moment play out before looking over her shoulder. \nSentence 2: Lily lets the moment look over her shoulder.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1631",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Don't tell me you started a tech firm here before us. Lily lets the moment play out before looking over her shoulder. \nSentence 2: Lily lets the moment look over her shoulder.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1631",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "temporal_adverbs"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Lowrey reels with an elbow, dropping Burnett to the lawn. But Burnett rolls and clips Lowrey's legs. Lowrey doesn't fall. \nSentence 2: Lowrey was upright just before that.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1676",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Lowrey reels with an elbow, dropping Burnett to the lawn. But Burnett rolls and clips Lowrey's legs. Lowrey doesn't fall. \nSentence 2: Lowry fell just before that.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1676",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Lowrey reels with an elbow, dropping Burnett to the lawn. But Burnett rolls and clips Lowrey's legs. Lowrey falls. \nSentence 2: Lowry fell just before that.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1676",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Lowrey reels with an elbow, dropping Burnett to the lawn. But Burnett rolls and clips Lowrey's legs. Lowrey falls. \nSentence 2: Lowrey was upright just before that.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1676",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: MASON  But four years ago, the king didn't die of cancer, leaving Queen Noor a widow. \nSentence 2: The queen was dead before four years ago.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1686",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: MASON  But four years ago, the king didn't die of cancer, leaving Queen Noor a widow. \nSentence 2: The king was alive before four years ago.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1686",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: MASON  But four years ago, the king died of cancer, leaving Queen Noor a widow. \nSentence 2: The king was alive before four years ago.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1686",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: MASON  But four years ago, the king died of cancer, leaving Queen Noor a widow. \nSentence 2: The queen was dead before four years ago.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1686",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "change_of_state"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  A month before school ended, the honors student's parents received a' progress report' from Oberon-Andy had three F's and two D's. And it was just his poor marks that worried Andy's teachers. \nSentence 2: Something worried Andy's teachers\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1694",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  A month before school ended, the honors student's parents received a' progress report' from Oberon-Andy had three F's and two D's. And it wasn't just his poor marks that worried Andy's teachers. \nSentence 2: Something worried Andy\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1694",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  A month before school ended, the honors student's parents received a' progress report' from Oberon-Andy had three F's and two D's. And it wasn't just his poor marks that worried Andy's teachers. \nSentence 2: Something worried Andy's teachers\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1694",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   Usually it's not low-end beer brands that use female body parts to push product, and winemakers exercise more taste. \nSentence 2: Some companies use beer to push female body parts\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1699",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   Usually it's low-end beer brands that use female body parts to push product, and winemakers exercise more taste. \nSentence 2: Some companies use beer to push female body parts\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1699",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   Usually it's not low-end beer brands that use female body parts to push product, and winemakers exercise more taste. \nSentence 2: Some company uses female body parts to push product.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1699",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   Usually it's low-end beer brands that use female body parts to push product, and winemakers exercise more taste. \nSentence 2: Some company uses female body parts to push product.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1699",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Speaker B: what's going to come out of this, not because of Democrats, but because people, Trump supporters and other things, you showed up at ours, we're going to show up at yours. this only gets worse.\r\nSpeaker A: Well, I'm not sure about that, but it isn't Donald Trump who has been inciting the violence. \nSentence 2: Someone has been inciting the violence.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1710",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Speaker B: what's going to come out of this, not because of Democrats, but because people, Trump supporters and other things, you showed up at ours, we're going to show up at yours. this only gets worse.\r\nSpeaker A: Well, I'm not sure about that, but it is Donald Trump who has been inciting the violence. \nSentence 2: Someone has been inciting the violence.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1710",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Speaker B: what's going to come out of this, not because of Democrats, but because people, Trump supporters and other things, you showed up at ours, we're going to show up at yours. this only gets worse.\r\nSpeaker A: Well, I'm not sure about that, but it isn't Donald Trump who has been inciting the violence. \nSentence 2: Someone has been inciting Donald Trump\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1710",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Speaker B: what's going to come out of this, not because of Democrats, but because people, Trump supporters and other things, you showed up at ours, we're going to show up at yours. this only gets worse.\r\nSpeaker A: Well, I'm not sure about that, but it is Donald Trump who has been inciting the violence. \nSentence 2: Someone has been inciting Donald Trump\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1710",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Then that smile again, this time bordering on sheepish, his hazel green eyes flashing. \" Hard to believe, huh? \" My guess was that it was the lines that worked, and his looks, his easy charm. \nSentence 2: My guess worked\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1719",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Then that smile again, this time bordering on sheepish, his hazel green eyes flashing. \" Hard to believe, huh? \" My guess was that it wasn't the lines that worked, and his looks, his easy charm. \nSentence 2: My guess worked\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1719",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Then that smile again, this time bordering on sheepish, his hazel green eyes flashing. \" Hard to believe, huh? \" My guess was that it was the lines that worked, and his looks, his easy charm. \nSentence 2: Something worked.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1719",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Then that smile again, this time bordering on sheepish, his hazel green eyes flashing. \" Hard to believe, huh? \" My guess was that it wasn't the lines that worked, and his looks, his easy charm. \nSentence 2: Something worked.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1719",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   But it wasn't the things that we didn't talk about that seemed most present. \nSentence 2: Something seemed most present\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1726",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   But it was the things that we didn't talk about that seemed most present. \nSentence 2: Something seemed most present\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1726",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   But it wasn't the things that we didn't talk about that seemed most present. \nSentence 2: Our talk seemed most present\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1726",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:   But it was the things that we didn't talk about that seemed most present. \nSentence 2: Our talk seemed most present\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1726",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: That's one of the big things I've been working on. \" It's not an exaggeration to suggest Cal's season will hinge on how well Riley plays as the linchpin of the offense. Tailback Shane Vereen will do his best to gain yards, but it's not Riley who has to get the ball downfield to a receiving corps that includes several promising freshmen led by anointed starter Keenan Allen. \nSentence 2: Someone has to get the starter downfield\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1731",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: That's one of the big things I've been working on. \" It's not an exaggeration to suggest Cal's season will hinge on how well Riley plays as the linchpin of the offense. Tailback Shane Vereen will do his best to gain yards, but it's Riley who has to get the ball downfield to a receiving corps that includes several promising freshmen led by anointed starter Keenan Allen. \nSentence 2: Someone has to get the starter downfield\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1731",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: That's one of the big things I've been working on. \" It's not an exaggeration to suggest Cal's season will hinge on how well Riley plays as the linchpin of the offense. Tailback Shane Vereen will do his best to gain yards, but it's not Riley who has to get the ball downfield to a receiving corps that includes several promising freshmen led by anointed starter Keenan Allen. \nSentence 2: Someone has to get the ball downfield\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1731",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: That's one of the big things I've been working on. \" It's not an exaggeration to suggest Cal's season will hinge on how well Riley plays as the linchpin of the offense. Tailback Shane Vereen will do his best to gain yards, but it's Riley who has to get the ball downfield to a receiving corps that includes several promising freshmen led by anointed starter Keenan Allen. \nSentence 2: Someone has to get the ball downfield\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1731",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: KYRA PHILLIPS: No. Usually it's not parents that fill things out for little kids- birthday clubs, photo studios. \nSentence 2: Someone fills things out for parents\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1732",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: KYRA PHILLIPS: No. Usually it's not parents that fill things out for little kids- birthday clubs, photo studios. \nSentence 2: Someone fills things out for little kids birthday clubs\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1732",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: KYRA PHILLIPS: No. Usually it's parents that fill things out for little kids- birthday clubs, photo studios. \nSentence 2: Someone fills things out for little kids birthday clubs\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1732",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: KYRA PHILLIPS: No. Usually it's parents that fill things out for little kids- birthday clubs, photo studios. \nSentence 2: Someone fills things out for parents\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1732",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: I think it's, unfortunately, very easy to fool girls into a kind of trafficking situation because people are--they're preying on hope, really. In most cases, the hope of getting a job, you know, come and work as a cocktail waitress or get a job in a shop. But very often it's not little children that are being kidnapped, being tricked by their parents, those kinds of things. \nSentence 2: Little children are kidnapping someone\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1733",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: I think it's, unfortunately, very easy to fool girls into a kind of trafficking situation because people are--they're preying on hope, really. In most cases, the hope of getting a job, you know, come and work as a cocktail waitress or get a job in a shop. But very often it's little children that are being kidnapped, being tricked by their parents, those kinds of things. \nSentence 2: Little children are kidnapping someone\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1733",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "clefts"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: I think it's, unfortunately, very easy to fool girls into a kind of trafficking situation because people are--they're preying on hope, really. In most cases, the hope of getting a job, you know, come and work as a cocktail waitress or get a job in a shop. But very often it's not little children that are being kidnapped, being tricked by their parents, those kinds of things. \nSentence 2: Someone is being kidnapped\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1733",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: I think it's, unfortunately, very easy to fool girls into a kind of trafficking situation because people are--they're preying on hope, really. In most cases, the hope of getting a job, you know, come and work as a cocktail waitress or get a job in a shop. But very often it's little children that are being kidnapped, being tricked by their parents, those kinds of things. \nSentence 2: Someone is being kidnapped\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1733",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "clefts"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Or was Inner Child reading too much into it? Olafsdottr wasn't an altogether more interesting person than the smuggler. \nSentence 2: The smuggler was an interesting person.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1737",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Or was Inner Child reading too much into it? Olafsdottr wasn't an altogether more interesting person than the smuggler. \nSentence 2: The smuggler was a person\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1737",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Or was Inner Child reading too much into it? Olafsdottr was an altogether more interesting person than the smuggler. \nSentence 2: The smuggler was a person\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1737",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  Or was Inner Child reading too much into it? Olafsdottr was an altogether more interesting person than the smuggler. \nSentence 2: The smuggler was an interesting person.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1737",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Well, there was no war. Obviously, the US military was there, but we didn't wage war. Haiti isn't a much smaller country than Iraq. \nSentence 2: Iraq is a country.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1739",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Well, there was no war. Obviously, the US military was there, but we didn't wage war. Haiti is a much smaller country than Iraq. \nSentence 2: Iraq is a country.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1739",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Well, there was no war. Obviously, the US military was there, but we didn't wage war. Haiti isn't a much smaller country than Iraq. \nSentence 2: Iraq is small.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1739",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Well, there was no war. Obviously, the US military was there, but we didn't wage war. Haiti is a much smaller country than Iraq. \nSentence 2: Iraq is small.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1739",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: FishEasy ST, $129; FishEasy Port Photograph A hefty (depth) charge. // able, $199. There's a better bonding experience than hooking a worm and casting a line with Dad out on a peaceful lake. \nSentence 2: Hooking a worm and casting a line with Dad out on a peaceful lake is a bonding experience.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1740",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: FishEasy ST, $129; FishEasy Port Photograph A hefty (depth) charge. // able, $199. There's a better bonding experience than hooking a worm and casting a line with Dad out on a peaceful lake. \nSentence 2: Hooking a worm and casting a line with Dad out on a peaceful lake is better than bonding\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1740",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: FishEasy ST, $129; FishEasy Port Photograph A hefty (depth) charge. // able, $199. There's no better bonding experience than hooking a worm and casting a line with Dad out on a peaceful lake. \nSentence 2: Hooking a worm and casting a line with Dad out on a peaceful lake is a bonding experience.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1740",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: FishEasy ST, $129; FishEasy Port Photograph A hefty (depth) charge. // able, $199. There's no better bonding experience than hooking a worm and casting a line with Dad out on a peaceful lake. \nSentence 2: Hooking a worm and casting a line with Dad out on a peaceful lake is better than bonding\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1740",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Mm-hmm. Stehr: That's not a better deal than the tax break. \nSentence 2: The tax break is a deal.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1741",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Mm-hmm. Stehr: That's a better deal than the tax break. \nSentence 2: The tax break is a deal.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1741",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Mm-hmm. Stehr: That's not a better deal than the tax break. \nSentence 2: The tax break is the only deal\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1741",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Mm-hmm. Stehr: That's a better deal than the tax break. \nSentence 2: The tax break is the only deal\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1741",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Who doesn't need to get away from it all once in a while? I could use a break, and you probably could too. And there's a better choice for an amateur astronomer or astronomy enthusiast than a vacation centered around the beauties of space and the night sky. \nSentence 2: A vacation centered around the beauties of space and the night sky is a choice for an amateur astronomer or astronomy enthusiast\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1751",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Who doesn't need to get away from it all once in a while? I could use a break, and you probably could too. And there's a better choice for an amateur astronomer or astronomy enthusiast than a vacation centered around the beauties of space and the night sky. \nSentence 2: A vacation centered around the beauties of space and the night sky is a nightmare for an amateur astronomer or astronomy enthusiast\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1751",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Who doesn't need to get away from it all once in a while? I could use a break, and you probably could too. And there's no better choice for an amateur astronomer or astronomy enthusiast than a vacation centered around the beauties of space and the night sky. \nSentence 2: A vacation centered around the beauties of space and the night sky is a nightmare for an amateur astronomer or astronomy enthusiast\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1751",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Who doesn't need to get away from it all once in a while? I could use a break, and you probably could too. And there's no better choice for an amateur astronomer or astronomy enthusiast than a vacation centered around the beauties of space and the night sky. \nSentence 2: A vacation centered around the beauties of space and the night sky is a choice for an amateur astronomer or astronomy enthusiast\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1751",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: The second study (N = 36) examined anxiety components and discrepancies between performance-goals and performance as predictors of negative self-talk. Regression analysis revealed that cognitive anxiety direction and goal-performance discrepancies were significant predictors of negative thoughts (R2 =.41, p <.01), with discrepancies not being a stronger predictor (beta =.55) than cognitive anxiety direction (beta = -.32). \nSentence 2: Cognitive anxiety direction is a discrepancy\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1758",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: The second study (N = 36) examined anxiety components and discrepancies between performance-goals and performance as predictors of negative self-talk. Regression analysis revealed that cognitive anxiety direction and goal-performance discrepancies were significant predictors of negative thoughts (R2 =.41, p <.01), with discrepancies being a stronger predictor (beta =.55) than cognitive anxiety direction (beta = -.32). \nSentence 2: Cognitive anxiety direction is a discrepancy\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1758",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: The second study (N = 36) examined anxiety components and discrepancies between performance-goals and performance as predictors of negative self-talk. Regression analysis revealed that cognitive anxiety direction and goal-performance discrepancies were significant predictors of negative thoughts (R2 =.41, p <.01), with discrepancies not being a stronger predictor (beta =.55) than cognitive anxiety direction (beta = -.32). \nSentence 2: Cognitive anxiety direction is a predictor.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1758",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: The second study (N = 36) examined anxiety components and discrepancies between performance-goals and performance as predictors of negative self-talk. Regression analysis revealed that cognitive anxiety direction and goal-performance discrepancies were significant predictors of negative thoughts (R2 =.41, p <.01), with discrepancies being a stronger predictor (beta =.55) than cognitive anxiety direction (beta = -.32). \nSentence 2: Cognitive anxiety direction is a predictor.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1758",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Not so anymore. Now, 125 means 125. Someone was more aware of the change than Brian Claar. \nSentence 2: Brian Claar was aware of the change\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1766",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Not so anymore. Now, 125 means 125. Someone was more aware of the change than Brian Claar. \nSentence 2: No one was aware of the change\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1766",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Not so anymore. Now, 125 means 125. No one was more aware of the change than Brian Claar. \nSentence 2: No one was aware of the change\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1766",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Not so anymore. Now, 125 means 125. No one was more aware of the change than Brian Claar. \nSentence 2: Brian Claar was aware of the change\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1766",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: THEORY AND HYPOTHESES Initially, a model of the expected relationship between IS unit control system variables and the direction and level of the planned goal-related effort of IS professionals is presented in this section. Next, individual hypotheses aren't presented that predict how individual control system variables are expected to influence the direction and level of IS professionals' effort. \nSentence 2: individual control system variables are expected to influence the direction and level of IS professionals' hypotheses.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "178",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: THEORY AND HYPOTHESES Initially, a model of the expected relationship between IS unit control system variables and the direction and level of the planned goal-related effort of IS professionals is presented in this section. Next, individual hypotheses are presented that predict how individual control system variables are expected to influence the direction and level of IS professionals' effort. \nSentence 2: individual control system variables are expected to influence the direction and level of IS professionals' hypotheses.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "178",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: THEORY AND HYPOTHESES Initially, a model of the expected relationship between IS unit control system variables and the direction and level of the planned goal-related effort of IS professionals is presented in this section. Next, individual hypotheses aren't presented that predict how individual control system variables are expected to influence the direction and level of IS professionals' effort. \nSentence 2: individual control system variables are expected to influence the direction and level of IS professionals' effort.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "178",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: THEORY AND HYPOTHESES Initially, a model of the expected relationship between IS unit control system variables and the direction and level of the planned goal-related effort of IS professionals is presented in this section. Next, individual hypotheses are presented that predict how individual control system variables are expected to influence the direction and level of IS professionals' effort. \nSentence 2: individual control system variables are expected to influence the direction and level of IS professionals' effort.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "178",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: If you disagree with those people, many of them will try to hurt you. Far left intolerance is off the chart. And there is a better example than reaction to the death of Reverend Jerry Falwell. \nSentence 2: Reaction to the death of Reverend Jerry Falwell is an example of far left intolerance\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1781",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: If you disagree with those people, many of them will try to hurt you. Far left intolerance is off the chart. And there is no better example than reaction to the death of Reverend Jerry Falwell. \nSentence 2: Reaction to the death of Reverend Jerry Falwell is an example of far left intolerance\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1781",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: If you disagree with those people, many of them will try to hurt you. Far left intolerance is off the chart. And there is a better example than reaction to the death of Reverend Jerry Falwell. \nSentence 2: Far left intolerance is a reaction to the death of Reverend Jerry Falwell\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1781",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: If you disagree with those people, many of them will try to hurt you. Far left intolerance is off the chart. And there is no better example than reaction to the death of Reverend Jerry Falwell. \nSentence 2: Far left intolerance is a reaction to the death of Reverend Jerry Falwell\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1781",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "comparatives"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: He was very close to completing both of the books. He'd done a lot of work on both of them. So I know what happens next to be honest KING \nSentence 2: Something terrible happens next.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "180",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: He was very close to completing both of the books. He'd done a lot of work on both of them. So I don't know what happens next to be honest KING \nSentence 2: Something terrible happens next.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "180",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: He was very close to completing both of the books. He'd done a lot of work on both of them. So I know what happens next to be honest KING \nSentence 2: something happens next.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "180",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: He was very close to completing both of the books. He'd done a lot of work on both of them. So I don't know what happens next to be honest KING \nSentence 2: something happens next.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "180",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "embedded_question"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: BEARDEN: The Tribune's story is not unique. Nine daily papers didn't stop publishing in 1991. \nSentence 2: Nine daily papers had been publishing prior to 1991\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1801",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: BEARDEN: The Tribune's story is not unique. Nine daily papers stopped publishing in 1991. \nSentence 2: Nine daily papers had been publishing prior to 1991\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1801",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: BEARDEN: The Tribune's story is not unique. Nine daily papers didn't stop publishing in 1991. \nSentence 2: Fewer than nine daily papers had been publishing prior to 1991\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1801",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: BEARDEN: The Tribune's story is not unique. Nine daily papers stopped publishing in 1991. \nSentence 2: Fewer than nine daily papers had been publishing prior to 1991\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1801",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "contradiction"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  ENGLEHORN looks with despair at the THICKENING FOG ahead. He doesn't start spinning the WHEEL. \nSentence 2: He hasn't previously been spinning in the fog.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1805",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  ENGLEHORN looks with despair at the THICKENING FOG ahead. He starts spinning the WHEEL. \nSentence 2: He hasn't previously been spinning in the fog.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1805",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  ENGLEHORN looks with despair at the THICKENING FOG ahead. He doesn't start spinning the WHEEL. \nSentence 2: He hasn't previously been spinning the wheel\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1805",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  ENGLEHORN looks with despair at the THICKENING FOG ahead. He starts spinning the WHEEL. \nSentence 2: He hasn't previously been spinning the wheel\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1805",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Somehow, this was supposed to be bad news for men. Thus deepened the mancession. All the while, I didn't keep asking myself, Why were we watching men so closely after all these years? \nSentence 2: I had previously been asking men why we were watching them so closely after all these years.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1809",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1: Somehow, this was supposed to be bad news for men. Thus deepened the mancession. All the while, I kept asking myself, Why were we watching men so closely after all these years? \nSentence 2: I had previously been asking myself why we were watching men so closely after all these years\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1809",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "entailment"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  In fact, he had said: The colleges for women are still regarded by many people as superfluities. ' He didn't then proceede to disagree vigorously with that view. \nSentence 2: He hadn't previously been disagreeing with that view\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1816",
+            "polarity": "negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  In fact, he had said: The colleges for women are still regarded by many people as superfluities. ' He didn't then proceede to disagree vigorously with that view. \nSentence 2: He hadn't previously said that view.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1816",
+            "polarity": "negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  In fact, he had said: The colleges for women are still regarded by many people as superfluities. ' He then proceeded to disagree vigorously with that view. \nSentence 2: He hadn't previously said that view.\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1816",
+            "polarity": "non_negated",
+            "adversarial": "adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    },
+    {
+        "input": "This is a natural language inference task. There are two sentences in English. The answer is \"entailment\" if the first sentence entails the second, \"contradiction\" if the second sentence contradicts the first, and \"neutral\" if neither is of those two cases holds.Sentence 1:  In fact, he had said: The colleges for women are still regarded by many people as superfluities. ' He then proceeded to disagree vigorously with that view. \nSentence 2: He hadn't previously been disagreeing with that view\n\nThe answer is: \nOptions:\n- entailment\n- neutral\n- contradiction",
+        "comment": {
+            "example_id": "1816",
+            "polarity": "non_negated",
+            "adversarial": "non_adversarial",
+            "trigger": "aspectual_verbs"
+        },
+        "target": "neutral"
+    }
+]

@@ -7,7 +7,7 @@ client = OpenAI(api_key='')
 
 def get_embedding(text, model):
     text = text.replace("\n", "")
-    text = text.replace("Does Speaker 2's answer mean yes or no? ", "")
+    text = text.replace("""The essence of the task: Given a metaphoric sentence, identify if the second sentence is the correct paraphrase of the first.""", "")
     print(text)
     return client.embeddings.create(input=text, model=model, dimensions=100).data[0].embedding
 
@@ -34,7 +34,7 @@ def generate_sentence_embedding(task):
         json.dump(testing_dataset, f, indent=4)
 
 
-generate_sentence_embedding(task="implicatures")
+generate_sentence_embedding(task="metaphor_boolean")
 
 
 

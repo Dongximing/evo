@@ -1,20 +1,23 @@
 import json
 
 # Load the dataset
-task = "implicatures"
+task = "metaphor_boolean"
 with open("/Users/ximing/Desktop/EvoPrompt/BBH/data/%s.json" % task, 'r') as file:
     data = json.load(file)["examples"]
 
 # Modify the dataset
-for example in data:
+for index,example in enumerate(data):
     # Adding prefix and tail to the 'input'
-    example["input"] = "Does Speaker 2's answer mean yes or no? " + example["input"] + "\nOptions:\n- Yes\n- No"
+    example["input"] = """"The essence of the task: Given a metaphoric sentence, identify if the second sentence is the correct paraphrase of the first.""" + example["input"] + "\nOptions:\n- True\n- False"
 
     # Changing 'target_scores' to 'target' and updating its value
-    if example["target_scores"]["yes"] == 1.0:
-        example["target"] = "Yes"
-    elif example["target_scores"]["no"] == 1.0:
-        example["target"] = "No"
+    print(index)
+    if example["target_scores"]["True"] == 1.0:
+        example["target"] = "True"
+    elif example["target_scores"]["False"] == 1.0:
+        example["target"] = "False"
+    # elif example["target_scores"]["contradiction"] == 1:
+    #     example["target"] = "contradiction"
     del example["target_scores"]  # Remove the old key
 
 # Optionally, you can split the dataset into training and testing sets
