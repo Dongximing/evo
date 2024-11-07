@@ -119,6 +119,11 @@ class Evoluter:
                 "-----concatenate method---------"
             )
             self.dev_data = dev_data
+        elif self.sampling_method == "anchor_all":
+            logger.info(
+                "-----concatenate method---------"
+            )
+            self.dev_data = dev_data
         elif self.sampling_method == "sampling_dynamic":
             logger.info(
                 "-----there is a sampling_dynamic method---------"
