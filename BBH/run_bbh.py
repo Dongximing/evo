@@ -220,7 +220,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                 for item in list_top20_logprob:
                     if item.strip() == answers[index]:
                         if not discrete:
-                            if answers[index] == "yes":
+                            if answers[index] == "True":
                                 logit_matrix[0] = list_top20_logprob[item][item]
                             else:
                                 try:
@@ -235,7 +235,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                                     logit_matrix[1] = 0
 
                         else:
-                            if answers[index] == "yes":
+                            if answers[index] == "True":
                                 logit_matrix[0] = 1
                             else:
                                 logit_matrix[1] = 1
