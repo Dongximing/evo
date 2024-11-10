@@ -204,7 +204,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
     print_first = True
 
 
-    score = np.empty((0, 3))
+    score = np.empty((0, 4))
     if anchor:
 
         # prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
@@ -215,24 +215,26 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
         for index, list_top20_logprob in enumerate(list_top20_logprobs):
             #logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}........all the data.{eval_data[index]}")
             ans_ = extract_ans(responses[index], mode)
-            logit_matrix = np.zeros(3)
+            logit_matrix = np.zeros(4)
             if ans_ == answers[index]:
                 for item in list_top20_logprob:
                     if item.strip() == answers[index]:
                         if not discrete:
-                            if answers[index] == "True":
+                            if answers[index] == "ent":
                                 logit_matrix[0] = list_top20_logprob[item][item]
-                            else:
+                            elif answers[index] == "neutral":
+                                logit_matrix[1] = list_top20_logprob[item][item]
+                            elif answers[index] == "contr":
                                 try:
-                                    logit_matrix[1] = list_top20_logprob[item][item]  # Attempt to assign the value
+                                    logit_matrix[2] = list_top20_logprob[item][item]  # Attempt to assign the value
                                      # Return the updated matrix if successful
                                 except IndexError:
                                     # If there is an index error, return 0
-                                    logit_matrix[1] = 0
+                                    logit_matrix[2] = 0
                                 except Exception as e:
                                     # Optional: handle other exceptions if necessary
                                     print(f"An unexpected error occurred: {e}")
-                                    logit_matrix[1] = 0
+                                    logit_matrix[2] = 0
 
                         else:
                             if answers[index] == "True":
