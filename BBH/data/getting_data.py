@@ -25,12 +25,12 @@ Options:
     del example["target_scores"]  # Remove the old key
 
 # Optionally, you can split the dataset into training and testing sets
-training_dataset = data[:200]
-testing_dataset = data[200:300]
-with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_train_data.json', 'w') as f:
-    json.dump(training_dataset, f, indent=4)
-with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_test_data.json', 'w') as f:
-    json.dump(testing_dataset, f, indent=4)
+# training_dataset = data[:200]
+# testing_dataset = data[200:300]
+# with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_train_data.json', 'w') as f:
+#     json.dump(training_dataset, f, indent=4)
+# with open(f'/Users/ximing/Desktop/EvoPrompt/BBH/data/{task}_test_data.json', 'w') as f:
+#     json.dump(testing_dataset, f, indent=4)
 
 # Print the length of the dataset to verify the number of examples loaded
 print(len(data))
