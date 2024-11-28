@@ -206,3 +206,78 @@ def half_half(seed, data):
     return combined_df
     # combined_df.to_csv('half_half.csv', index=False)
     # print("half_half done")
+def iterative_select(seed, data):
+
+    df = data
+    converted_data = df['embedding']
+    array_2d = np.array(converted_data.tolist())
+    print("array_2d")
+    print(array_2d)
+
+
+    index_pair = find_lowest_similarity_pair(array_2d)
+    i_first = df.iloc[index_pair[0]]['input']
+    i_second = df.iloc[index_pair[1]]['input']
+    input_sentence = df['input'].tolist()
+    sentence1 = input_sentence[index_pair[0]]
+    sentence2 = input_sentence[index_pair[1]]
+    input_sentence.remove(sentence1)
+    input_sentence.remove(sentence2)
+    similarity_list = array_2d
+    select_list_embedding = np.array([similarity_list[index_pair[0]], similarity_list[index_pair[1]]])
+    similarity_list = np.delete(similarity_list, [index_pair[0], index_pair[1]], axis=0)
+
+    select_list = [i_first, i_second]
+    number_list = 10
+    num = 2
+
+    def mean_similarity(select_embeddings, candidate_embedding):
+        select_list_embedding = np.array(select_embeddings)
+        candidate_embedding = np.array(candidate_embedding)
+        similarity = cosine_similarity(candidate_embedding, select_list_embedding)
+        average_cos_sim = np.mean(similarity)
+        return average_cos_sim
+
+    while num < number_list:
+        min_sim = np.inf
+        I_f = None
+        candidate_embedding = None
+        for index, candidate in enumerate(input_sentence):
+            candidate_embedding = similarity_list[index]
+            candidate_embedding = candidate_embedding.reshape(1, -1)
+            sim_t = mean_similarity(select_list_embedding, candidate_embedding)
+            if sim_t < min_sim:
+                min_sim = sim_t
+                I_f = candidate
+                remove_index = index
+                candidate_embedding = similarity_list[index]
+        input_sentence.remove(I_f)
+        select_list.append(I_f)
+        similarity_list = np.delete(similarity_list, remove_index, axis=0)
+        select_list_embedding = np.vstack((select_list_embedding, candidate_embedding))
+
+        num += 1
+
+    values_to_find = select_list
+
+    column_name = 'input'
+
+    filtered_df = df[df[column_name].isin(values_to_find)]
+
+    unselected_df = df[~df[column_name].isin(values_to_find)]
+
+    # def select_two_per_cluster(group):
+    #     return group.sample(n=2) if len(group) >= 2 else group
+    #
+    # selected_unselected_df = unselected_df.groupby("Cluster").apply(select_two_per_cluster).reset_index(drop=True)
+    selected_unselected_df = rate_clustering(unselected_df, seed, total_samples=10)
+    combined_df = pd.concat([filtered_df, selected_unselected_df])
+    combined = pd.concat([df, combined_df])
+    duplicates = combined[combined.duplicated(keep=False)]
+
+    # Filter these duplicates from the big DataFrame
+    new_df = df[~df['input'].isin(duplicates['input'])]
+    print("half_half done")
+    print(f"len new_df{len(new_df)}")
+    return new_df, combined_df
+

@@ -204,12 +204,12 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
     print_first = True
 
 
-    score = np.empty((0, 4))
+
     if anchor:
 
         # prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
         # print("BBH/run_bbh.py:195",len(prompt_qs),len(questions),len(answers))
-
+        score = np.empty((0, 4))
         list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon,seed,**kwargs)
         logger.info(f"BBH/run_bbh.py:215   {len(list_top20_logprobs)} .....{len(responses)}.......{len(answers)}")
         for index, list_top20_logprob in enumerate(list_top20_logprobs):

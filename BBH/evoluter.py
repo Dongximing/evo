@@ -22,8 +22,60 @@ from run_bbh import eval_task
 import functools
 
 import editdistance
+def proportional_selection(data, total_select):
+    total_items = sum(len(sublist) for sublist in data)
 
+    # Determine the number of items to select from each sublist
+    selections = []
+    for sublist in data:
+        if total_items == 0:
+            break
+        num_to_select = round(len(sublist) / total_items * total_select)
+        selected_items = random.sample(sublist, min(num_to_select, len(sublist)))
+        selections.extend(selected_items)
+        total_select -= num_to_select
+        total_items -= len(sublist)
 
+    # In case rounding errors made us select too few elements, add the missing ones
+    if len(selections) < total_select:
+        remaining_items = [item for sublist in data for item in sublist if item not in selections]
+        selections.extend(random.sample(remaining_items, total_select - len(selections)))
+
+    return selections
+def group_similar_items(matrix, threshold):
+    """
+    Group indices of a symmetric matrix based on similarity above a given threshold.
+
+    Parameters:
+        matrix (np.ndarray): A symmetric matrix where each element represents similarity between items.
+        threshold (float): The similarity threshold for grouping items.
+
+    Returns:
+        list of lists: Each sublist contains indices of items grouped together based on the similarity threshold.
+    """
+    n_items = matrix.shape[0]  # Number of items
+    groups = []  # Initialize groups
+
+    # Helper function to add items to groups
+    def add_to_group(item1, item2):
+        nonlocal groups
+        found = False
+        for group in groups:
+            if item1 in group or item2 in group:
+                group.update([item1, item2])
+                found = True
+                break
+        if not found:
+            groups.append(set([item1, item2]))
+
+    # Iterate over matrix elements to group indices
+    for i in range(n_items):
+        for j in range(i + 1, n_items):  # Start from i+1 to avoid double checking and diagonal
+            if matrix[i, j] > threshold:
+                add_to_group(i, j)
+
+    # Convert set to list for easier interpretation
+    return [list(group) for group in groups]
 def calculate_edit_distances(sentences):
     distances = []
 
@@ -151,6 +203,17 @@ class Evoluter:
             pass
         elif self.sampling_method == "cluster_paper":
             pass
+        elif self.sampling_method == "static_iteration":
+            logger.info(
+                "-----there is a static_iteration method---------"
+            )
+            df = pd.DataFrame(dev_data)
+            seed = random.randint(1, 100)
+            unsampled_data, sampled_data = half_half(seed=seed, data=df)
+            self.dev_data = sampled_data.to_dict(orient='records')
+            self.unsampled_data = unsampled_data
+
+
         elif self.sampling_method == "anchor":
             logger.info(
                 "-----there is a anchor method---------"
@@ -369,8 +432,6 @@ class Evoluter:
 
     def calculate_anchor_point(self, populations):
         result, score = self.eval_func(cot_prompt=populations, eval_data=self.dev_data,anchor=True,discrete=False)
-        print(score)
-        print(type(score))
         a, b = score.shape
         c = a*b//len(self.dev_data)
         accumulated_array = dynamic_reshape(score,(len(self.dev_data),c),len(self.dev_data),b)
@@ -378,6 +439,10 @@ class Evoluter:
 
     def getting_dataset_from_anchor_point(self):
         pass
+    def change_dataset(self,populations):
+        self.calculate_anchor_point(populations)
+
+
 
     def test(self, step):
         self.logger.info(f"----------testing step {step} population----------")
@@ -414,7 +479,7 @@ class Evoluter:
                     if best == pop_scores[i]:
                         test_mark = pop_marks[i]
                         test_score, _ = self.eval_func(
-                            cot_prompt=test_prompt, eval_data=self.test_data, anchor=False, discrete=False
+                            cot_prompt=test_prompt, eval_data=self.test_data, anchor=True, discrete=False
                         )
                         dev_score = self.evaluated_prompts[test_prompt]
                         all_score = (
@@ -429,7 +494,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'evoluted' and evoluted == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = False, discrete=False
+                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = True, discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -446,7 +511,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'manual' and manual == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data,anchor = False,discrete=False
+                        cot_prompt=test_prompt, eval_data=self.test_data,anchor = True,discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -462,7 +527,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'para' and para == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = False,discrete=False
+                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = True,discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -503,6 +568,8 @@ class GAEvoluter(Evoluter):
         step = -1
 
         for step in range(cur_budget + 1, args.budget):
+
+
 
             if step == 0 and self.sampling_method.startswith("anchor"):
                 dev_data = json.load(open(f"/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/{args.task}_train_data.json"))
@@ -720,6 +787,18 @@ class GAEvoluter(Evoluter):
             self.write_step(i=step, best_score=best_score, avg_score=avg_score)
             if find_max:
                 break
+            # training_score = self.calculate_anchor_point(self.population)
+            # group_index = group_similar_items(matrix=training_score, threshold=0.9)
+            # total_changes = sum(len(sublist) for sublist in group_index)
+            # total_changes = total_changes*0.5
+            # real_change_list = proportional_selection(group_index, total_changes)
+            # change_list = []
+            # for i in real_change_list:
+            #     change_list.append(self.dev_data[i])
+            # self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
+            # #
+
+
 
         self.test(step=step)
         best_edit_distance = calculate_edit_distances(the_best_ones)
