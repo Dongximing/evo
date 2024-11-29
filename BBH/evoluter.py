@@ -83,6 +83,37 @@ def calculate_edit_distances(sentences):
         dist = editdistance.eval(sentences[i], sentences[i + 1])
         distances.append((sentences[i], sentences[i + 1], dist))
     return distances
+    filtered_df = selected_data[selected_data['input'].isin(change_list)]
+    print("filtered_df",filtered_df)
+    print("\n")
+    remained_list = selected_data[~selected_data['input'].isin(change_list)]
+    print("remained_list",remained_list)
+    print("\n")
+    converted_data = filtered_df['input_embedding'].apply(ast.literal_eval)
+    compared_2d = np.array(converted_data.tolist())
+    converted_data = unselected_df['input_embedding'].apply(ast.literal_eval)
+    compare_2d = np.array(converted_data.tolist())
+    indices = find_least_similar_indices(compared_2d, compare_2d)
+    extracted_rows = unselected_df.iloc[indices]
+    print("extracted_rows",extracted_rows)
+    print("\n")
+    unselected_df = unselected_df.drop(unselected_df.index[indices])
+    print("unselected_df",unselected_df)
+    print("\n")
+    vertical_concat = pd.concat([remained_list, extracted_rows], axis=0)
+    print("vertical_concat",vertical_concat)
+    print("\n")
+    vertical_concat['is_active'] = vertical_concat['output'].astype(str)
+    train_data = DataTable.from_pandas(
+        vertical_concat,
+        input_fields="input",
+        output_fields="is_active",
+        constants=return_init_prompt(task_name),
+    )
+    #breakpoint()
+
+    return unselected_df, vertical_concat,train_data
+
 
 
 def calculate_edit_distances_for_all_prompt(sentences, logger):
@@ -212,6 +243,10 @@ class Evoluter:
             unsampled_data, sampled_data = half_half(seed=seed, data=df)
             self.dev_data = sampled_data.to_dict(orient='records')
             self.unsampled_data = unsampled_data
+            print("-----there is a static_iteration method")
+            print("unsampled_data",unsampled_data)
+            print("sampled_data",sampled_data)
+            breakpoint()
 
 
         elif self.sampling_method == "anchor":
@@ -787,16 +822,16 @@ class GAEvoluter(Evoluter):
             self.write_step(i=step, best_score=best_score, avg_score=avg_score)
             if find_max:
                 break
-            # training_score = self.calculate_anchor_point(self.population)
-            # group_index = group_similar_items(matrix=training_score, threshold=0.9)
-            # total_changes = sum(len(sublist) for sublist in group_index)
-            # total_changes = total_changes*0.5
-            # real_change_list = proportional_selection(group_index, total_changes)
-            # change_list = []
-            # for i in real_change_list:
-            #     change_list.append(self.dev_data[i])
-            # self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
-            # #
+            training_score = self.calculate_anchor_point(self.population)
+            group_index = group_similar_items(matrix=training_score, threshold=0.9)
+            total_changes = sum(len(sublist) for sublist in group_index)
+            total_changes = total_changes*0.5
+            real_change_list = proportional_selection(group_index, total_changes)
+            change_list = []
+            for i in real_change_list:
+                change_list.append(self.dev_data[i])
+            self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
+            #
 
 
 
