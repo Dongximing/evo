@@ -278,11 +278,11 @@ def iterative_select(seed, data):
     combined_df = pd.concat([filtered_df, selected_unselected_df])
     print("combined_df-------------------->",combined_df)
 
-    combined = pd.concat([df, combined_df])
-    duplicates = combined[combined.duplicated(keep=False)]
+    # combined = pd.concat([df, combined_df])
+    # duplicates = combined[combined.duplicated(keep=False)]
 
     # Filter these duplicates from the big DataFrame
-    new_df = df[~df['input'].isin(duplicates['input'])]
+    new_df = df[~df['input'].isin(combined_df['input'])]
     print("half_half done")
     print(f"len new_df{len(new_df)}")
     return new_df, combined_df
