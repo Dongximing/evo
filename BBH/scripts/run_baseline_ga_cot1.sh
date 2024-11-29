@@ -4,7 +4,7 @@ set -ex
 
 
 BUDGET=8
-POPSIZE=10
+POPSIZE=3
 llm=turbo
 initial=cot
 initial_mode=para_topk
@@ -26,7 +26,7 @@ python ../run.py \
     --seed $seed \
     --task $task \
     --batch-size 1 \
-    --sample_num 20 \
+    --sample_num 10 \
     --budget $BUDGET \
     --popsize $POPSIZE \
     --evo_mode ga \
