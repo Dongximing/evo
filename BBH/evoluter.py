@@ -13,7 +13,8 @@ from utils import (
     get_final_prompt,
     extract_numbers,
     rate_clustering,
-    half_half
+    half_half,
+    iterative_select
 )
 from llm_client import paraphrase, llm_query
 from data.template_ga import templates_2
