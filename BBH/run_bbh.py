@@ -90,7 +90,7 @@ def create_request(custom_id, user_message):
                 {"role": "user", "content": user_message}
             ],
             "logprobs": True,
-            "top_logprobs": 20,
+            "top_logprobs": 1,
 
         },
     }
