@@ -240,7 +240,7 @@ class Evoluter:
             )
             df = pd.DataFrame(dev_data)
             seed = random.randint(1, 100)
-            unsampled_data, sampled_data = half_half(seed=seed, data=df)
+            unsampled_data, sampled_data = iterative_select(seed=seed, data=df)
             self.dev_data = sampled_data.to_dict(orient='records')
             self.unsampled_data = unsampled_data
             print("-----there is a static_iteration method")
