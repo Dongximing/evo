@@ -101,7 +101,7 @@ def extract_ans(ans, mode):
         return ans
     else:
         ans = ans_line[-1].strip()
-    
+
     if mode == 'multiple_choice':
         options = ['(A)', '(B)', '(C)', '(D)', '(E)', '(F)', '(G)', '(H)', '(I)', '(J)', '(K)', '(L)', '(M)', '(N)', '(O)', '(P)', '(Q)', '(R)', '(S)', '(T)', '(U)', '(V)', '(W)', '(X)', '(Y)', '(Z)']
         for option in options:
@@ -112,6 +112,10 @@ def extract_ans(ans, mode):
     elif mode == 'free_form':
         if ans[-1] == '.':
             ans = ans[:-1]
+        if ans.startswith('contradiction'):
+            ans = 'contr'
+        if ans.startswith('entailment'):
+            ans = 'ent'
         return ans
 
 def read_yaml_file(file_path):
