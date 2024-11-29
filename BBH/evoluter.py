@@ -479,7 +479,7 @@ class Evoluter:
                     if best == pop_scores[i]:
                         test_mark = pop_marks[i]
                         test_score, _ = self.eval_func(
-                            cot_prompt=test_prompt, eval_data=self.test_data, anchor=True, discrete=False
+                            cot_prompt=[test_prompt], eval_data=self.test_data, anchor=True, discrete=False
                         )
                         dev_score = self.evaluated_prompts[test_prompt]
                         all_score = (
@@ -494,7 +494,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'evoluted' and evoluted == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = True, discrete=False
+                        cot_prompt=[test_prompt], eval_data=self.test_data, anchor = True, discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -511,7 +511,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'manual' and manual == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data,anchor = True,discrete=False
+                        cot_prompt=[test_prompt], eval_data=self.test_data,anchor = True,discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
@@ -527,7 +527,7 @@ class Evoluter:
                 if self.prompts2mark[test_prompt] == 'para' and para == False:
                     test_mark = pop_marks[i]
                     test_score, _ = self.eval_func(
-                        cot_prompt=test_prompt, eval_data=self.test_data, anchor = True,discrete=False
+                        cot_prompt=[test_prompt], eval_data=self.test_data, anchor = True,discrete=False
                     )
                     dev_score = self.evaluated_prompts[test_prompt]
                     all_score = (
