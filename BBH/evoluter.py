@@ -247,7 +247,7 @@ class Evoluter:
             print("-----there is a static_iteration method")
             print("unsampled_data",unsampled_data)
             print("sampled_data",sampled_data)
-            breakpoint()
+            #breakpoint()
 
 
         elif self.sampling_method == "anchor":
@@ -823,16 +823,18 @@ class GAEvoluter(Evoluter):
             self.write_step(i=step, best_score=best_score, avg_score=avg_score)
             if find_max:
                 break
-            training_score = self.calculate_anchor_point(self.population)
-            group_index = group_similar_items(matrix=training_score, threshold=0.9)
-            total_changes = sum(len(sublist) for sublist in group_index)
-            total_changes = total_changes*0.5
-            real_change_list = proportional_selection(group_index, total_changes)
-            change_list = []
-            for i in real_change_list:
-                change_list.append(self.dev_data[i])
-            self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
-            #
+            if self.sampling_method == "static_iteration":
+                training_score = self.calculate_anchor_point(self.population)
+                group_index = group_similar_items(matrix=training_score, threshold=0.9)
+                total_changes = sum(len(sublist) for sublist in group_index)
+                total_changes = total_changes*0.5
+                real_change_list = proportional_selection(group_index, total_changes)
+                change_list = []
+                for i in real_change_list:
+                    change_list.append(self.dev_data[i])
+                print(change_list)
+                self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
+                #
 
 
 
