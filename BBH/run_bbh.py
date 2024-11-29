@@ -58,7 +58,7 @@ def create_parallel_dataset(mode, task_prompt, cot_prompts, eval_data,demon=1):
     prompt_qs = []
     answers= []
     # print("BBH/run_bbh.py:38",eval_data)
-    # print("BBH/run_bbh.py:39", cot_prompts)
+    print("BBH/run_bbh.py:39", cot_prompts)
     # print("BBH/run_bbh.py:40",task_prompt)
     # print("BBH/run_bbh.py:64", eval_data)
     for cot_prompt in cot_prompts:
@@ -213,7 +213,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
         list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon,seed,**kwargs)
         logger.info(f"BBH/run_bbh.py:215   {len(list_top20_logprobs)} .....{len(responses)}.......{len(answers)}")
         for index, list_top20_logprob in enumerate(list_top20_logprobs):
-            #logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}........all the data.{eval_data[index]}")
+            logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}........all the data.{eval_data[index]}")
             ans_ = extract_ans(responses[index], mode)
             logit_matrix = np.zeros(4)
             if ans_ == answers[index]:
