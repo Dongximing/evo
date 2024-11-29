@@ -248,7 +248,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
             score = np.vstack((score, logit_matrix))
         accuracy = correct / len(eval_data)
         logger.info(f"BBH/run_bbh.py:214   accuracy {accuracy}--------------------->{correct}")
-        breakpoint()
+
         return accuracy, score
     prompt_qs, questions, answers = create_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
     # print("BBH/run_bbh.py:212",prompt_qs)
