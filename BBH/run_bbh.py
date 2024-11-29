@@ -213,7 +213,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
         list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon,seed,**kwargs)
         logger.info(f"BBH/run_bbh.py:215   {len(list_top20_logprobs)} .....{len(responses)}.......{len(answers)}")
         for index, list_top20_logprob in enumerate(list_top20_logprobs):
-            logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}........all the data.{eval_data[index]}")
+            logger.info(f"BBH/run_bbh.py:217    {responses[index]} .........answer .......{answers[index]}.....{index}.. {task_prompt[index]}......all the data.{eval_data[index]}")
             ans_ = extract_ans(responses[index], mode)
             logit_matrix = np.zeros(4)
             if ans_ == answers[index]:
@@ -245,6 +245,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
 
             score = np.vstack((score, logit_matrix))
         accuracy = correct / len(eval_data)
+        breakpoint()
         return accuracy, score
     prompt_qs, questions, answers = create_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
     # print("BBH/run_bbh.py:212",prompt_qs)
