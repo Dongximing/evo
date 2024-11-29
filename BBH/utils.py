@@ -276,6 +276,8 @@ def iterative_select(seed, data):
     # selected_unselected_df = unselected_df.groupby("Cluster").apply(select_two_per_cluster).reset_index(drop=True)
     selected_unselected_df = rate_clustering(unselected_df, seed, total_samples=10)
     combined_df = pd.concat([filtered_df, selected_unselected_df])
+    print("combined_df-------------------->",combined_df)
+
     combined = pd.concat([df, combined_df])
     duplicates = combined[combined.duplicated(keep=False)]
 
