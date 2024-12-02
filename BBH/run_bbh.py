@@ -159,7 +159,7 @@ def inference_openai(sentences,seed):
     # print("BBH/run_bbh.py:161", all_data)
     responses = []
     for data in all_data:
-        top_twenty_logprobs = data["response"]["body"]["choices"][0]["logprobs"]["content"]
+        top_twenty_logprobs = data["response"]["body"]["choices"][0]["logprobs"]["content"][-6:]
         response = data["response"]["body"]["choices"][0]["message"]["content"]
         responses.append(response)
 
@@ -192,7 +192,12 @@ def first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, mod
     print(prompt_qs)
     list_top20_logprobs, output_cost,responses = inference_openai(prompt_qs,seed)
     return list_top20_logprobs, output_cost,responses,answers
-
+def find_token_index(data_list, token_to_find):
+    token_to_find = token_to_find.lower()  # Make the search token lowercase
+    for index, element in enumerate(data_list):
+        if element.get("token", "").strip().lower() == token_to_find:  # Compare case-insensitively
+            return index
+    return -1
 
 
 def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon, anchor, discrete, seed, **kwargs):
@@ -217,28 +222,28 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
             logger.info(
                 f"BBH/run_bbh.py:217--------model res -----{responses[index]} .........answer .......{answers[index]}.....{index}.......ans.....{ans_}......all the data.{eval_data[index]}")
             logit_matrix = np.zeros(4)
+            search_token = "is"
             if ans_ == answers[index]:
                 if not discrete:
-                    logger.info(f"*****************kkkkkddddd********{answers[index]}*******************************************\n\n")
-                    if answers[index] == "ent":
-                        logger.info(f"*************************{list_top20_logprob[-3]['token']}*******************************************\n\n")
+                    index = find_token_index(list_top20_logprob, search_token)
+                    if index == -1:
+                        continue
+                    else:
 
-                        assert list_top20_logprob[-3]["token"] == " entail"
-                        logit_matrix[0] = list_top20_logprob[-3]["logprob"]
-                        logger.info(f"*************************kd*******************************************\n\n")
-                    elif answers[index] == "neutral":
-                        logger.info(f"*************************{list_top20_logprob[-2]['token']}*******************************************\n\n")
 
-                        assert list_top20_logprob[-2]["token"] == " neutral"
-                        logit_matrix[1] = list_top20_logprob[-2]["logprob"]
-                        logger.info(f"*************************kd*******************************************\n\n")
-                    elif answers[index] == "contr":
-                        logger.info(
-                            f"*************************{list_top20_logprob[-2]['token']}*******************************************\n\n")
+                        if answers[index] == "ent":
+                            logger.info(f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
+                            logit_matrix[0] = list_top20_logprob[index+1]["logprob"]
 
-                        assert list_top20_logprob[-2]["token"] == " contradiction"
-                        logit_matrix[2] = list_top20_logprob[-2]["logprob"]
-                        logger.info(f"***************************kd*****************************************\n\n")
+                        elif answers[index] == "neutral":
+                            logger.info(f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
+                            logit_matrix[1] = list_top20_logprob[index+1]["logprob"]
+
+                        elif answers[index] == "contr":
+                            logger.info(
+                                f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
+                            logit_matrix[2] = list_top20_logprob[index+1]["logprob"]
+
 
 
                 correct += 1
