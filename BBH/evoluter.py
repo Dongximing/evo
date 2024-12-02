@@ -467,11 +467,17 @@ class Evoluter:
         raise NotImplementedError
 
     def calculate_anchor_point(self, populations):
-        result, score = self.eval_func(cot_prompt=populations, eval_data=self.dev_data,anchor=True,discrete=False)
-        a, b = score.shape
-        c = a*b//len(self.dev_data)
-        accumulated_array = dynamic_reshape(score,(len(self.dev_data),c),len(self.dev_data),b)
-        return accumulated_array
+        results = []
+        for pop in populations:
+            result, score = self.eval_func(cot_prompt=[pop], eval_data=self.dev_data,anchor=True,discrete=False)
+            assert score.shape[0] == 20
+            assert score.shape[1] == 4
+            results.append(score)
+        final_result = np.hstack(results)
+        # a, b = score.shape
+        # c = a*b//len(self.dev_data)
+        # accumulated_array = dynamic_reshape(score,(len(self.dev_data),c),len(self.dev_data),b)
+        return final_result
 
     def getting_dataset_from_anchor_point(self):
         pass
@@ -834,6 +840,9 @@ class GAEvoluter(Evoluter):
                 for i in real_change_list:
                     change_list.append(self.dev_data[i])
                 print(change_list)
+                print(self.dev_data)
+                print(self.unselected_df)
+
                 self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
                 #
 
