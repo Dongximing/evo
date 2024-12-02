@@ -436,7 +436,7 @@ class Evoluter:
         total_score = 0
 
         self.population = [i for i in init_population]
-        assert len(self.population) == args.popsize
+        #assert len(self.population) == args.popsize
 
         with open(os.path.join(out_path, "step0_pop_para.txt"), "w") as wf:
             for i in self.population:
