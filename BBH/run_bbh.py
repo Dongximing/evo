@@ -219,15 +219,19 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
             logit_matrix = np.zeros(4)
             if ans_ == answers[index]:
                 if not discrete:
+                    logger.info(f"*****************kkkkkddddd********{answers[index]}*******************************************\n\n")
                     if answers[index] == "entail":
                         assert list_top20_logprob[-3]["token"] == " entail"
                         logit_matrix[0] = list_top20_logprob[-3]["logprob"]
+                        logger.info(f"*************************kd*******************************************\n\n")
                     elif answers[index] == "neutral":
                         assert list_top20_logprob[-2]["token"] == " neutral"
                         logit_matrix[1] = list_top20_logprob[-2]["logprob"]
+                        logger.info(f"*************************kd*******************************************\n\n")
                     elif answers[index] == "contradiction":
                         assert list_top20_logprob[-2]["token"] == " contradiction"
-                        logit_matrix[1] = list_top20_logprob[-2]["logprob"]
+                        logit_matrix[2] = list_top20_logprob[-2]["logprob"]
+                        logger.info(f"***************************kd*****************************************\n\n")
 
 
                 correct += 1

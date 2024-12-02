@@ -734,7 +734,7 @@ class GAEvoluter(Evoluter):
             if args.sel_mode == "wheel":
                 wheel_idx = np.random.choice(
                     np.arange(args.popsize),
-                    size=10,
+                    size=3,
                     replace=True,
                     p=fitness / fitness.sum(),
                 ).tolist()  # temp self.population to select parents
