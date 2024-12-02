@@ -159,16 +159,12 @@ def inference_openai(sentences,seed):
     # print("BBH/run_bbh.py:161", all_data)
     responses = []
     for data in all_data:
-        top_twenty_logprobs = data["response"]["body"]["choices"][0]["logprobs"]
+        top_twenty_logprobs = data["response"]["body"]["choices"][0]["logprobs"]["content"]
         response = data["response"]["body"]["choices"][0]["message"]["content"]
         responses.append(response)
-        token_dict = {
-            data["token"]: {tp["token"]: tp["logprob"] for tp in data["top_logprobs"]}
-            for data in top_twenty_logprobs["content"]
-        }
-        output_cost += len(encoding.encode(response))
 
-        list_top20_logprobs.append(token_dict)
+        output_cost += len(encoding.encode(response))
+        list_top20_logprobs.append(top_twenty_logprobs)
     if os.path.exists(file_path):
         # Delete the file
         os.remove(file_path)
@@ -222,35 +218,25 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                 f"BBH/run_bbh.py:217--------model res -----{responses[index]} .........answer .......{answers[index]}.....{index}.......ans.....{ans_}......all the data.{eval_data[index]}")
             logit_matrix = np.zeros(4)
             if ans_ == answers[index]:
-                for item in list_top20_logprob:
-                    if item.strip() == answers[index]:
-                        if not discrete:
-                            if answers[index] == "ent":
-                                logit_matrix[0] = list_top20_logprob[item][item]
-                            elif answers[index] == "neutral":
-                                logit_matrix[1] = list_top20_logprob[item][item]
-                            elif answers[index] == "contr":
-                                try:
-                                    logit_matrix[2] = list_top20_logprob[item][item]  # Attempt to assign the value
-                                     # Return the updated matrix if successful
-                                except IndexError:
-                                    # If there is an index error, return 0
-                                    logit_matrix[2] = 0
-                                except Exception as e:
-                                    # Optional: handle other exceptions if necessary
-                                    print(f"An unexpected error occurred: {e}")
-                                    logit_matrix[2] = 0
+                if not discrete:
+                    if answers[index] == "entail":
+                        assert list_top20_logprob[-3]["token"] == " entail"
+                        logit_matrix[0] = list_top20_logprob[-3]["logprob"]
+                    elif answers[index] == "neutral":
+                        assert list_top20_logprob[-3]["token"] == " neutral"
+                        logit_matrix[1] = list_top20_logprob[-2]["logprob"]
+                    elif answers[index] == "contradiction":
+                        assert list_top20_logprob[-3]["token"] == " contradiction"
+                        logit_matrix[1] = list_top20_logprob[-2]["logprob"]
 
-                        else:
-                            if answers[index] == "True":
-                                logit_matrix[0] = 1
-                            else:
-                                logit_matrix[1] = 1
+
                 correct += 1
 
             score = np.vstack((score, logit_matrix))
         accuracy = correct / len(eval_data)
         logger.info(f"BBH/run_bbh.py:214   accuracy {accuracy}--------------------->{correct}")
+        logger.info(f"********************************************************************\n\n")
+        logger.info(f"BBH/run_bbh.py:238   score {score}")
 
         return accuracy, score
     prompt_qs, questions, answers = create_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
