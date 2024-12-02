@@ -594,10 +594,11 @@ class GAEvoluter(Evoluter):
         best_scores = []
         avg_scores = []
 
-        logger.info(f"init  self.evaluated_prompts{self.evaluated_prompts}")
-        logger.info(f"cur_budget------------------->{cur_budget}")
-        logger.info(f"cur_budget------------------->{args.budget}")
-        logger.info(f"init  self.population{self.population}")
+        # logger.info(f"init  self.evaluated_prompts{self.evaluated_prompts}")
+        # logger.info(f"cur_budget------------------->{cur_budget}")
+        # logger.info(f"cur_budget------------------->{args.budget}")
+        # logger.info(f"init  self.population{self.population}")
+        logger.info("------------------------------------------start evol--------------------------------------------------------------------------------------")
         total_candidate = []
         the_best_ones = []
         find_max = False
