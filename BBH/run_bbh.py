@@ -58,7 +58,7 @@ def create_parallel_dataset(mode, task_prompt, cot_prompts, eval_data,demon=1):
     prompt_qs = []
     answers= []
     # print("BBH/run_bbh.py:38",eval_data)
-    print("BBH/run_bbh.py:39", cot_prompts)
+
     # print("BBH/run_bbh.py:40",task_prompt)
     # print("BBH/run_bbh.py:64", eval_data)
     for cot_prompt in cot_prompts:
@@ -189,7 +189,6 @@ def inference_openai(sentences,seed):
 def first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon ,seed,**kwargs):
     mode = 'multiple_choice' if task in MULTIPLE_CHOICE_TASKS else 'free_form'
     prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
-    print(prompt_qs)
     list_top20_logprobs, output_cost,responses = inference_openai(prompt_qs,seed)
     return list_top20_logprobs, output_cost,responses,answers
 def find_token_index(data_list, token_to_find):
@@ -220,7 +219,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
 
             ans_ = extract_ans(responses[index], mode)
             logger.info(
-                f"BBH/run_bbh.py:217--------model res -----{responses[index]} .........answer .......{answers[index]}.....{index}.......ans.....{ans_}......all the data.{eval_data[index]}")
+                f"BBH/run_bbh.py:217--------model res -----{responses[index]} .........answer .......{answers[index]}.....{index}.......ans.....{ans_}")
             logit_matrix = np.zeros(4)
             search_token = "is"
             if ans_ == answers[index]:
@@ -229,8 +228,6 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                     if index == -1:
                         continue
                     else:
-
-
                         if answers[index] == "ent":
                             logger.info(f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
                             logit_matrix[0] = list_top20_logprob[index+1]["logprob"]

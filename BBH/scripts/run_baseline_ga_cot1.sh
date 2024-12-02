@@ -4,7 +4,6 @@ set -ex
 
 
 BUDGET=8
-POPSIZE=3
 llm=turbo
 initial=cot
 initial_mode=para_topk
