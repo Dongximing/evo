@@ -158,8 +158,49 @@ def dynamic_reshape(arr, new_shape, row_skip, elements_per_row):
 
     return new_arr
 
+def find_least_similar_indices(d1, d2):
+    # Compute cosine similarity between all pairs
+    similarity_matrix = cosine_similarity(d1, d2)
+
+    # Initialize list to store indices of least similar vectors in d2 for each vector in d1
+    least_similar_indices = []
+
+    # Iterate over each vector in d1
+    for i in range(d1.shape[0]):
+        # Mask previously selected indices by setting their similarity to a high value (inf)
+        similarity_matrix[:, [least_similar_indices]] = np.inf
+        # Find the index of the least similar vector in d2 for the current d1 vector
+        least_sim_index = np.argmin(similarity_matrix[i])
+        # Append the found index to the list
+        least_similar_indices.append(least_sim_index)
 
 #
+def doing_change(change_list,unselected_df,selected_data,task_name):
+    filtered_df = selected_data[selected_data['input'].isin(change_list)]
+    print("filtered_df",filtered_df)
+    print("\n")
+    remained_list = selected_data[~selected_data['input'].isin(change_list)]
+    print("remained_list",remained_list)
+    print("\n")
+    converted_data = filtered_df['embedding']
+    compared_2d = np.array(converted_data.tolist())
+    converted_data = unselected_df['embedding']
+    compare_2d = np.array(converted_data.tolist())
+    indices = find_least_similar_indices(compared_2d, compare_2d)
+    extracted_rows = unselected_df.iloc[indices]
+    print("extracted_rows",extracted_rows)
+    print("\n")
+    unselected_df = unselected_df.drop(unselected_df.index[indices])
+    print("unselected_df",unselected_df)
+    print("\n")
+    vertical_concat = pd.concat([remained_list, extracted_rows], axis=0)
+    print("vertical_concat",vertical_concat)
+    print("\n")
+    vertical_concat['is_active'] = vertical_concat['output'].astype(str)
+
+    breakpoint()
+
+    return unselected_df, vertical_concat
 
 
 class Evoluter:
@@ -844,9 +885,9 @@ class GAEvoluter(Evoluter):
                     change_list.append(self.dev_data[i])
                 print(change_list)
                 print(self.dev_data)
-                print(self.unselected_df)
+                print(self.unsampled_data)
 
-                self.unselected_df,selected_data, dataset = doing_change(change_list,self.unselected_data,self.dev_data,'a')
+                self.unsampled_data,self.dev_data = doing_change(change_list,self.unsampled_data,self.dev_data,'a')
                 #
 
 
