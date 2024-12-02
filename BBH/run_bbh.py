@@ -224,22 +224,22 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
             search_token = "is"
             if ans_ == answers[index]:
                 if not discrete:
-                    index = find_token_index(list_top20_logprob, search_token)
-                    if index == -1:
+                    find_index = find_token_index(list_top20_logprob, search_token)
+                    if find_index == -1:
                         continue
                     else:
                         if answers[index] == "ent":
-                            logger.info(f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
-                            logit_matrix[0] = list_top20_logprob[index+1]["logprob"]
+                            logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
+                            logit_matrix[0] = list_top20_logprob[find_index+1]["logprob"]
 
                         elif answers[index] == "neutral":
-                            logger.info(f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
-                            logit_matrix[1] = list_top20_logprob[index+1]["logprob"]
+                            logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
+                            logit_matrix[1] = list_top20_logprob[find_index+1]["logprob"]
 
                         elif answers[index] == "contr":
                             logger.info(
-                                f"*************************{list_top20_logprob[index+1]['token']}*******************************************\n\n")
-                            logit_matrix[2] = list_top20_logprob[index+1]["logprob"]
+                                f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
+                            logit_matrix[2] = list_top20_logprob[find_index+1]["logprob"]
 
 
 
