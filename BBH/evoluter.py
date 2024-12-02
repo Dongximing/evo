@@ -471,7 +471,7 @@ class Evoluter:
         for pop in populations:
             result, score = self.eval_func(cot_prompt=[pop], eval_data=self.dev_data,anchor=True,discrete=False)
             assert score.shape[0] == 20
-            assert score.shape[1] == 4
+            assert score.shape[1] == 3
             results.append(score)
         final_result = np.hstack(results)
         # a, b = score.shape
@@ -832,6 +832,7 @@ class GAEvoluter(Evoluter):
                 break
             if self.sampling_method == "static_iteration":
                 training_score = self.calculate_anchor_point(self.population)
+                print(f"training_score--------------------------------->{training_score.shape}")
                 group_index = group_similar_items(matrix=training_score, threshold=0.9)
                 total_changes = sum(len(sublist) for sublist in group_index)
                 total_changes = total_changes*0.5
