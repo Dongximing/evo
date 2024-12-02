@@ -28,7 +28,7 @@ python ../run.py \
     --batch-size 1 \
     --sample_num 10 \
     --budget $BUDGET \
-    --popsize POPSIZE \
+    --popsize $POPSIZE \
     --evo_mode ga \
     --llm_type $llm \
     --setting default \
