@@ -15,7 +15,7 @@ for task in nli
 do
 for SIZE in 1
 do
-POPSIZE=1
+POPSIZE=2
 OUT_PATH=outputs/$task/$initial/ga/bd${BUDGET}_top${POPSIZE}_${initial_mode}_init/$llm/$data_method
 for seed in 116
 do

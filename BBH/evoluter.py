@@ -436,7 +436,7 @@ class Evoluter:
         total_score = 0
 
         self.population = [i for i in init_population]
-        #assert len(self.population) == args.popsize
+        assert len(self.population) == args.popsize
 
         with open(os.path.join(out_path, "step0_pop_para.txt"), "w") as wf:
             for i in self.population:
@@ -726,10 +726,10 @@ class GAEvoluter(Evoluter):
             fitness = np.array([self.evaluated_prompts[i] for i in self.population])
 
             logger.info(f"fitness IN 546-------------------------------->{fitness}")
-            input_list = [item['input'] for item in self.dev_data]
-            logger.info("**" * 50)
-            logger.info(f"input_list      ---------->  {input_list}")
-            logger.info("**" * 50)
+            # input_list = [item['input'] for item in self.dev_data]
+            # logger.info("**" * 50)
+            # logger.info(f"input_list      ---------->  {input_list}")
+            # logger.info("**" * 50)
             new_pop = []
             if args.sel_mode == "wheel":
                 wheel_idx = np.random.choice(
