@@ -15,7 +15,7 @@ for task in nli
 do
 for SIZE in 1
 do
-POPSIZE=$SIZE
+POPSIZE=1
 OUT_PATH=outputs/$task/$initial/ga/bd${BUDGET}_top${POPSIZE}_${initial_mode}_init/$llm/$data_method
 for seed in 115
 do
@@ -28,7 +28,7 @@ python ../run.py \
     --batch-size 1 \
     --sample_num 10 \
     --budget $BUDGET \
-    --popsize $POPSIZE \
+    --popsize 1 \
     --evo_mode ga \
     --llm_type $llm \
     --setting default \
