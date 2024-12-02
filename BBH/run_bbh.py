@@ -179,9 +179,9 @@ def inference_openai(sentences,seed):
     else:
         # File does not exist
         print("File not found.")
-    print('----------------------------------------------------------------')
-    print(list_top20_logprobs)
-    breakpoint()
+    # print('----------------------------------------------------------------')
+    # print(list_top20_logprobs)
+    # breakpoint()
 
     return list_top20_logprobs, output_cost,responses
 
