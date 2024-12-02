@@ -21,6 +21,7 @@ from data.template_ga import templates_2
 from data.templates import *
 from run_bbh import eval_task
 import functools
+from sklearn.metrics.pairwise import cosine_similarity
 
 import editdistance
 def proportional_selection(data, total_select):
@@ -833,7 +834,8 @@ class GAEvoluter(Evoluter):
             if self.sampling_method == "static_iteration":
                 training_score = self.calculate_anchor_point(self.population)
                 print(f"training_score--------------------------------->{training_score.shape}")
-                group_index = group_similar_items(matrix=training_score, threshold=0.9)
+                similarity_matrix = cosine_similarity(training_score)
+                group_index = group_similar_items(matrix=similarity_matrix, threshold=0.5)
                 total_changes = sum(len(sublist) for sublist in group_index)
                 total_changes = total_changes*0.5
                 real_change_list = proportional_selection(group_index, total_changes)
