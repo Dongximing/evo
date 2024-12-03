@@ -3,7 +3,7 @@
 set -ex
 
 
-BUDGET=8
+BUDGET=5
 llm=turbo
 initial=cot
 initial_mode=para_topk
@@ -14,9 +14,9 @@ for task in nli
 do
 for SIZE in 1
 do
-POPSIZE=2
+POPSIZE=10
 OUT_PATH=outputs/$task/$initial/ga/bd${BUDGET}_top${POPSIZE}_${initial_mode}_init/$llm/$data_method
-for seed in 116
+for seed in 119
 do
 mkdir -p $OUT_PATH/seed${seed}
 cache_path=cache/$task/seed$seed
@@ -25,7 +25,7 @@ python ../run.py \
     --seed $seed \
     --task $task \
     --batch-size 1 \
-    --sample_num 10 \
+    --sample_num 20 \
     --budget $BUDGET \
     --popsize $POPSIZE \
     --evo_mode ga \
