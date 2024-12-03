@@ -185,6 +185,7 @@ def doing_change(change_list,unselected_df,selected_data,task_name):
 
     # 生成结果列表，包括 B 中独有的完整元素
     unique_items = [item for item in selected_data if tuple(item['embedding']) not in unique_in_b]
+    unchange_items = [item for item in selected_data if tuple(item['embedding']) in unique_in_b]
 
     embeddings_list = [item['embedding'] for item in unique_items]
     print(len(embeddings_list))
@@ -201,7 +202,7 @@ def doing_change(change_list,unselected_df,selected_data,task_name):
 
     # 删除这些元素，重新构建列表，排除掉这些索引的元素
     unselected_df = [item for idx, item in enumerate(unselected_df) if idx not in indices]
-    unique_items.extend(least_similar_items)
+    unchange_items.extend(least_similar_items)
     print("unique_items---------------------------->",len(unique_items))
     print("unselected_df---------------------------->", len(unselected_df))
 
