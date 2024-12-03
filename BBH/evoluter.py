@@ -173,34 +173,40 @@ def find_least_similar_indices(d1, d2):
         least_sim_index = np.argmin(similarity_matrix[i])
         # Append the found index to the list
         least_similar_indices.append(least_sim_index)
-
+    return least_similar_indices
 #
 def doing_change(change_list,unselected_df,selected_data,task_name):
-    filtered_df = selected_data[selected_data['input'].isin(change_list)]
-    print("filtered_df",filtered_df)
-    print("\n")
-    remained_list = selected_data[~selected_data['input'].isin(change_list)]
-    print("remained_list",remained_list)
-    print("\n")
-    converted_data = filtered_df['embedding']
-    compared_2d = np.array(converted_data.tolist())
-    converted_data = unselected_df['embedding']
-    compare_2d = np.array(converted_data.tolist())
-    indices = find_least_similar_indices(compared_2d, compare_2d)
-    extracted_rows = unselected_df.iloc[indices]
-    print("extracted_rows",extracted_rows)
-    print("\n")
-    unselected_df = unselected_df.drop(unselected_df.index[indices])
-    print("unselected_df",unselected_df)
-    print("\n")
-    vertical_concat = pd.concat([remained_list, extracted_rows], axis=0)
-    print("vertical_concat",vertical_concat)
-    print("\n")
-    vertical_concat['is_active'] = vertical_concat['output'].astype(str)
+    inputs_in_a = {tuple(item['embedding']) for item in change_list}
+    inputs_in_b = {tuple(item['embedding']) for item in selected_data}
+
+    # 找出只存在于 B 中的 'embedding' 值
+    unique_in_b = inputs_in_b - inputs_in_a
+    print(len(unique_in_b))
+
+    # 生成结果列表，包括 B 中独有的完整元素
+    unique_items = [item for item in selected_data if tuple(item['embedding']) in unique_in_b]
+    embeddings_list = [item['embedding'] for item in unique_items]
+
+    # 将列表转换为 NumPy 二维数组
+    embeddings_array = np.array(embeddings_list)
+
+    unembeddings_list = [item['embedding'] for item in unselected_df]
+    unembeddings_array = np.array(unembeddings_list)
+
+
+
+    indices = find_least_similar_indices(embeddings_array, unembeddings_array)
+    least_similar_items = [unselected_df[i] for i in indices]
+
+    # 删除这些元素，重新构建列表，排除掉这些索引的元素
+    unselected_df = [item for idx, item in enumerate(unselected_df) if idx not in indices]
+    unique_items.extend(least_similar_items)
+    print("unique_items---------------------------->",len(unique_items))
+    print("unselected_df---------------------------->", len(unselected_df))
 
     breakpoint()
 
-    return unselected_df, vertical_concat
+    return unselected_df, unique_items
 
 
 class Evoluter:
@@ -285,7 +291,7 @@ class Evoluter:
             seed = random.randint(1, 100)
             unsampled_data, sampled_data = iterative_select(seed=seed, data=df)
             self.dev_data = sampled_data.to_dict(orient='records')
-            self.unsampled_data = unsampled_data
+            self.unsampled_data = unsampled_data.to_dict(orient='records')
             print("-----there is a static_iteration method")
             print("unsampled_data",unsampled_data)
             print("sampled_data",sampled_data)
@@ -886,6 +892,7 @@ class GAEvoluter(Evoluter):
                 print(change_list)
                 print(self.dev_data)
                 print(self.unsampled_data)
+
 
                 self.unsampled_data,self.dev_data = doing_change(change_list,self.unsampled_data,self.dev_data,'a')
                 #
