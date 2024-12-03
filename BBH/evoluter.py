@@ -184,9 +184,10 @@ def doing_change(change_list,unselected_df,selected_data,task_name):
     print(len(unique_in_b))
 
     # 生成结果列表，包括 B 中独有的完整元素
-    unique_items = [item for item in selected_data if tuple(item['embedding']) in unique_in_b]
-    embeddings_list = [item['embedding'] for item in unique_items]
+    unique_items = [item for item in selected_data if tuple(item['embedding']) not in unique_in_b]
 
+    embeddings_list = [item['embedding'] for item in unique_items]
+    print(len(embeddings_list))
     # 将列表转换为 NumPy 二维数组
     embeddings_array = np.array(embeddings_list)
 
