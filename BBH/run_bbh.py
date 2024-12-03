@@ -227,7 +227,6 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                     find_index = find_token_index(list_top20_logprob, search_token)
                     if find_index == -1:
                         logger.info(f"*************************index is -1 ******")
-                        score = np.vstack((score, logit_matrix))
                     else:
                         if answers[index] == "ent":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
