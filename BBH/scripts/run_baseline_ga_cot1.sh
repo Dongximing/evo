@@ -16,7 +16,7 @@ for SIZE in 1
 do
 POPSIZE=10
 OUT_PATH=outputs/$task/$initial/ga/bd${BUDGET}_top${POPSIZE}_${initial_mode}_init/$llm/$data_method
-for seed in 324
+for seed in 322
 do
 mkdir -p $OUT_PATH/seed${seed}
 cache_path=cache/$task/seed$seed
