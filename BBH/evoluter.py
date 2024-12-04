@@ -307,7 +307,7 @@ class Evoluter:
             self.dev_data = random.sample(dev_data, args.sample_num)
         elif self.sampling_method == "sampling":
             logger.info(
-                "-----there is a anchor method---------"
+                "-----there is a sampling method---------"
             )
             self.dev_data = random.sample(dev_data, 20)
         elif self.sampling_method == "full_size_baseline":
