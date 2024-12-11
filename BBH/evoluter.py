@@ -520,8 +520,8 @@ class Evoluter:
         results = []
         for pop in populations:
             result, score = self.eval_func(cot_prompt=[pop], eval_data=self.dev_data,anchor=True,discrete=False)
-            assert score.shape[0] == 20
-            assert score.shape[1] == 3
+            assert score.shape[0] == 10
+            assert score.shape[1] == 2
             results.append(score)
         final_result = np.hstack(results)
         # a, b = score.shape

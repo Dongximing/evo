@@ -212,7 +212,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
 
         # prompt_qs, questions, answers = create_parallel_dataset(mode, task_prompt, cot_prompt, eval_data, demon)
         # print("BBH/run_bbh.py:195",len(prompt_qs),len(questions),len(answers))
-        score = np.empty((0, 3))
+        score = np.empty((0, 2))
         list_top20_logprobs, output_cost, responses,answers =first_step_parallel_pool(task, task_prompt,cot_prompt,eval_data, client, model_index,logger,demon,seed,**kwargs)
         logger.info(f"BBH/run_bbh.py:215   {len(list_top20_logprobs)} .....{len(responses)}.......{len(answers)}")
         for index, list_top20_logprob in enumerate(list_top20_logprobs):
@@ -220,7 +220,7 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
             ans_ = extract_ans(responses[index], mode)
             logger.info(
                 f"BBH/run_bbh.py:217--------model res -----{responses[index]} .........answer .......{answers[index]}.....{index}.......ans.....{ans_}")
-            logit_matrix = np.zeros(3)
+            logit_matrix = np.zeros(2)
             search_token = "is"
             if ans_ == answers[index]:
                 if not discrete:
@@ -228,18 +228,18 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                     if find_index == -1:
                         logger.info(f"*************************index is -1 ******")
                     else:
-                        if answers[index] == "ent":
+                        if answers[index] == "yes":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
                             logit_matrix[0] = list_top20_logprob[find_index+1]["logprob"]
 
-                        elif answers[index] == "neutral":
+                        elif answers[index] == "No":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
                             logit_matrix[1] = list_top20_logprob[find_index+1]["logprob"]
-
-                        elif answers[index] == "contr":
-                            logger.info(
-                                f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
-                            logit_matrix[2] = list_top20_logprob[find_index+1]["logprob"]
+                        #
+                        # elif answers[index] == "contr":
+                        #     logger.info(
+                        #         f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
+                        #     logit_matrix[2] = list_top20_logprob[find_index+1]["logprob"]
 
 
 
