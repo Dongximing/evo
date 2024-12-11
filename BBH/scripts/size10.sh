@@ -16,7 +16,7 @@ for SIZE in 1
 do
 POPSIZE=10
 OUT_PATH=outputs/$task/$initial/ga/bd${BUDGET}_top${POPSIZE}_${initial_mode}_init/$llm/$data_method
-for seed in 56
+for seed in 25
 do
 mkdir -p $OUT_PATH/seed${seed}
 cache_path=cache/$task/seed$seed
@@ -25,7 +25,7 @@ python ../run.py \
     --seed $seed \
     --task $task \
     --batch-size 1 \
-    --sample_num 20 \
+    --sample_num 10 \
     --budget $BUDGET \
     --popsize $POPSIZE \
     --evo_mode ga \
