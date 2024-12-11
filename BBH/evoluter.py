@@ -524,9 +524,6 @@ class Evoluter:
             assert score.shape[1] == 2
             results.append(score)
         final_result = np.hstack(results)
-        # a, b = score.shape
-        # c = a*b//len(self.dev_data)
-        # accumulated_array = dynamic_reshape(score,(len(self.dev_data),c),len(self.dev_data),b)
         return final_result
 
     def getting_dataset_from_anchor_point(self):
