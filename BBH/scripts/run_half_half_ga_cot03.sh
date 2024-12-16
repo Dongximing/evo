@@ -3,7 +3,7 @@
 set -ex
 
 
-BUDGET=8
+BUDGET=5
 POPSIZE=10
 llm=turbo
 initial=cot
