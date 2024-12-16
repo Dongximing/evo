@@ -163,7 +163,7 @@ def half_half(seed, data):
     similarity_list = np.delete(similarity_list, [index_pair[0], index_pair[1]], axis=0)
 
     select_list = [i_first, i_second]
-    number_list = 10
+    number_list = 20
     num = 2
 
     def mean_similarity(select_embeddings, candidate_embedding):
@@ -205,7 +205,7 @@ def half_half(seed, data):
     #     return group.sample(n=2) if len(group) >= 2 else group
     #
     # selected_unselected_df = unselected_df.groupby("Cluster").apply(select_two_per_cluster).reset_index(drop=True)
-    selected_unselected_df = rate_clustering(unselected_df, seed, total_samples=10)
+    selected_unselected_df = rate_clustering(unselected_df, seed, total_samples=0)
     combined_df = pd.concat([filtered_df, selected_unselected_df])
     return combined_df
     # combined_df.to_csv('half_half.csv', index=False)

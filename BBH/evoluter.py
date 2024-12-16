@@ -273,7 +273,7 @@ class Evoluter:
             sampled_data = rate_clustering(df, 42, args.sample_num)
             self.dev_data = sampled_data.to_dict(orient='records')
 
-        elif self.sampling_method == "half_half":
+        elif self.sampling_method == "boundary":
             logger.info(
                 "-----there is a half_half method---------"
             )
