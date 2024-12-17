@@ -228,11 +228,11 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                     if find_index == -1:
                         logger.info(f"*************************index is -1 ******")
                     else:
-                        if answers[index] == "yes":
+                        if answers[index] == "Yes":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
                             logit_matrix[0] = list_top20_logprob[find_index+1]["logprob"]
 
-                        elif answers[index] == "no":
+                        elif answers[index] == "NO":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
                             logit_matrix[1] = list_top20_logprob[find_index+1]["logprob"]
                         #
