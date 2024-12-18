@@ -176,7 +176,7 @@ def half_half(seed, data):
     while num < number_list:
         min_sim = np.inf
         I_f = None
-        candidate_embedding = None
+        small = None
         for index, candidate in enumerate(input_sentence):
             candidate_embedding = similarity_list[index]
             candidate_embedding = candidate_embedding.reshape(1, -1)
@@ -185,11 +185,11 @@ def half_half(seed, data):
                 min_sim = sim_t
                 I_f = candidate
                 remove_index = index
-                candidate_embedding = similarity_list[index]
+                small = similarity_list[index]
         input_sentence.remove(I_f)
         select_list.append(I_f)
         similarity_list = np.delete(similarity_list, remove_index, axis=0)
-        select_list_embedding = np.vstack((select_list_embedding, candidate_embedding))
+        select_list_embedding = np.vstack((select_list_embedding, small))
 
         num += 1
 
