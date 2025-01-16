@@ -228,18 +228,18 @@ def eval_task(task, task_prompt,cot_prompt,eval_data, client, model_index,logger
                     if find_index == -1:
                         logger.info(f"*************************index is -1 ******")
                     else:
-                        if answers[index] == "True":
+                        if answers[index] == "ent":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
                             logit_matrix[0] = list_top20_logprob[find_index+1]["logprob"]
 
-                        elif answers[index] == "False":
+                        elif answers[index] == "neutral":
                             logger.info(f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
                             logit_matrix[1] = list_top20_logprob[find_index+1]["logprob"]
                         #
-                        # elif answers[index] == "contr":
-                        #     logger.info(
-                        #         f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
-                        #     logit_matrix[2] = list_top20_logprob[find_index+1]["logprob"]
+                        elif answers[index] == "contr":
+                            logger.info(
+                                f"*************************{list_top20_logprob[find_index+1]['token']}*******************************************\n\n")
+                            logit_matrix[2] = list_top20_logprob[find_index+1]["logprob"]
 
 
 
