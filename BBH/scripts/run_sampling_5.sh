@@ -5,7 +5,7 @@ set -ex
 
 BUDGET=3
 POPSIZE=10
-llm=turbo4o
+llm=turbo
 initial=cot
 initial_mode=para_topk
 data_method=sampling
