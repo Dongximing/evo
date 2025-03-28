@@ -85,7 +85,7 @@ def create_request(custom_id, user_message):
         "method": "POST",
         "url": "/v1/chat/completions",
         "body": {
-            "model": "gpt-3.5-turbo-0125",
+            "model": "gpt-4o-mini-2024-07-18",
             "messages": [
                 {"role": "user", "content": user_message}
             ],
