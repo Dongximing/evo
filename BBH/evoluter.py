@@ -174,6 +174,59 @@ def find_least_similar_indices(d1, d2):
         # Append the found index to the list
         least_similar_indices.append(least_sim_index)
     return least_similar_indices
+def find_random_similar_indices(d1, d2):
+    # Compute cosine similarity between all pairs
+    similarity_matrix = cosine_similarity(d1, d2)
+
+    # Initialize list to store indices of least similar vectors in d2 for each vector in d1
+    least_similar_indices = []
+
+    # Iterate over each vector in d1
+    for i in range(d1.shape[0]):
+        # Mask previously selected indices by setting their similarity to a high value (np.inf)
+        similarity_matrix[:, least_similar_indices] = np.inf
+        # Find a random index that has not been masked with np.inf
+        valid_indices = np.where(similarity_matrix[i] != np.inf)[0]
+        if len(valid_indices) == 0:
+            raise ValueError("No more valid indices to select.")
+        least_sim_index = np.random.choice(valid_indices)
+        # Append the found index to the list
+        least_similar_indices.append(least_sim_index)
+    return least_similar_indices
+def doing_random_change(change_list,unselected_df,selected_data,task_name):
+    inputs_in_a = {tuple(item['embedding']) for item in change_list}
+    inputs_in_b = {tuple(item['embedding']) for item in selected_data}
+
+    # 找出只存在于 B 中的 'embedding' 值
+    unique_in_b = inputs_in_b - inputs_in_a
+    print(len(unique_in_b))
+
+    # 生成结果列表，包括 B 中独有的完整元素
+    unique_items = [item for item in selected_data if tuple(item['embedding']) not in unique_in_b]
+    unchange_items = [item for item in selected_data if tuple(item['embedding']) in unique_in_b]
+
+    embeddings_list = [item['embedding'] for item in unique_items]
+    print(len(embeddings_list))
+    # 将列表转换为 NumPy 二维数组
+    embeddings_array = np.array(embeddings_list)
+
+    unembeddings_list = [item['embedding'] for item in unselected_df]
+    unembeddings_array = np.array(unembeddings_list)
+
+
+
+    indices = find_random_similar_indices(embeddings_array, unembeddings_array)
+    least_similar_items = [unselected_df[i] for i in indices]
+
+    # 删除这些元素，重新构建列表，排除掉这些索引的元素
+    unselected_df = [item for idx, item in enumerate(unselected_df) if idx not in indices]
+    unchange_items.extend(least_similar_items)
+    print("unique_items---------------------------->",len(unique_items))
+    print("unselected_df---------------------------->", len(unselected_df))
+
+    #breakpoint()
+
+    return unselected_df, unchange_items
 #
 def doing_change(change_list,unselected_df,selected_data,task_name):
     inputs_in_a = {tuple(item['embedding']) for item in change_list}
@@ -283,8 +336,15 @@ class Evoluter:
             self.dev_data = sampled_data.to_dict(orient='records')
         elif self.sampling_method == "paper_method":
             pass
-        elif self.sampling_method == "cluster_paper":
-            pass
+        elif self.sampling_method == "static_iteration_random":
+            df = pd.DataFrame(dev_data)
+            seed = random.randint(1, 100)
+            unsampled_data, sampled_data = iterative_select(seed=seed, data=df)
+            self.dev_data = sampled_data.to_dict(orient='records')
+            self.unsampled_data = unsampled_data.to_dict(orient='records')
+            print("-----there is a static_iteration method")
+            print("unsampled_data", unsampled_data)
+            print("sampled_data", sampled_data)
         elif self.sampling_method == "static_iteration":
             logger.info(
                 "-----there is a static_iteration method---------"
@@ -894,6 +954,22 @@ class GAEvoluter(Evoluter):
 
 
                 self.unsampled_data,self.dev_data = doing_change(change_list,self.unsampled_data,self.dev_data,'a')
+            if self.sampling_method == "static_iteration_random":
+                training_score = self.calculate_anchor_point(self.population)
+                similarity_matrix = cosine_similarity(training_score)
+                group_index = group_similar_items(matrix=similarity_matrix, threshold=0.5)
+                total_changes = sum(len(sublist) for sublist in group_index)
+                total_changes = total_changes * 0.5
+                real_change_list = proportional_selection(group_index, total_changes)
+                change_list = []
+                for i in real_change_list:
+                    change_list.append(self.dev_data[i])
+                print(change_list)
+                print(self.dev_data)
+                print(self.unsampled_data)
+
+                self.unsampled_data, self.dev_data = doing_random_change(change_list, self.unsampled_data, self.dev_data,
+                                                                  'a')
                 #
 
 
