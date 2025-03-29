@@ -1,0 +1,31 @@
+Given a series of navigation instructions, determine whether one would end up back at the starting point.
+
+Q:Please judge whether the following sentence is true news. Says Tennessee is providing millions of dollars to virtual school company for results at the bottom of the bottom.
+Options:
+- true
+- false
+A: <prompt>
+(1) Tennessee has allocated significant funds to virtual schools, particularly in the context of expanding educational options. This includes funding to companies that manage these virtual schools, even if their performance metrics have been questioned or criticized in public forums and reports.
+(2) Reports and evaluations of virtual schools in Tennessee, such as those managed by larger education providers, have shown that some of these schools rank low in terms of student achievement and standardized test scores. These evaluations are typically conducted by state education departments and independent educational review organizations, which have often placed these schools in lower performance brackets.
+(3) The allocation of funds to underperforming schools has been a subject of public and legislative scrutiny in Tennessee. Lawmakers and educational policy analysts have discussed and sometimes criticized the effectiveness of spending on virtual schools that show low performance outcomes, highlighting that despite the significant investment, the results remain poor.
+So the answer is true.
+
+Q:Please judge whether the following sentence is true news. The median income of a middle class family went down $2,100 from 2001 to 2007.
+Options:
+- true
+- false
+A: <prompt>
+(1) The period from 2001 to 2007 in the United States included both economic expansion and challenges. It started with a recession in the early 2000s followed by recovery, but also included slow wage growth and increasing inequality which could have negatively impacted the median income of middle-class families. The economic context provides a plausible backdrop for stagnant or declining median income among middle-class families.
+(2) According to data from the U.S. Census Bureau, which regularly publishes reports on household income, there was notable stagnation and even decline in median household income during this period, especially when adjusted for inflation. For example, reports show that real median household income peaked around 1999, saw declines through the early 2000s, and had not fully recovered by 2007.
+(3) When considering changes in income, it's important to adjust for inflation to understand real income changes. Inflation during this period eroded the purchasing power of nominal income gains. The Bureau of Labor Statistics provides inflation data that, when applied to median income figures, can show a decrease in real terms even if nominal income might appear stable or slightly increasing.
+So the answer is true.
+
+Q: Please judge whether the following sentence is true news. Always face forward. Take 2 steps right. Take 9 steps left. Take 7 steps right.
+Options:
+- true
+- false
+A: <prompt>
+(1) Comprehensive, nationwide data specifically correlating the number of casualties in mass shootings with the intervention of armed civilians is limited. Most studies conducted on mass shootings do not conclusively support such specific numerical claims because incidents vary widely in circumstances, location, number of attackers, response times of law enforcement, and other critical factors.
+(2) Accurately quantifying the effect of armed civilian intervention on casualty numbers in mass shootings involves significant statistical challenges. Variability in the definition of what constitutes a mass shooting (e.g., the minimum number of victims), along with differing methodologies for counting "interventions" by civilians, can skew or complicate such statistics. The FBI and other agencies provide data, but they often do not break down mass shooting incidents into such specific categories that would support the precise figures given in the statement.
+(3) Research on the effectiveness of armed civilians in stopping mass shootings is mixed, with some studies suggesting that civilian intervention can be effective in certain situations, while others indicate that it may lead to more confusion or additional violence, potentially increasing the danger. For instance, a 2018 FBI report noted that active shooter incidents were rarely stopped by armed civilians (about 4% of cases studied). This data suggests that the scenario where armed civilians intervene effectively to drastically reduce casualties might not be as common as the statement implies.
+So the answer is false.
