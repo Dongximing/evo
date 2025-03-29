@@ -288,7 +288,7 @@ class Evoluter:
         self.args = args
 
         self.out_path = os.path.join(self.public_out_path, f"dev_result.txt")
-        self.task_data = json.load(open("/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/%s.json" % args.task))["examples"]
+        #self.task_data = json.load(open("/mnt/hdd-data/shaowei/data_selection/evo/BBH/data/%s.json" % args.task))["examples"]
         # self.dev_data = random.sample(self.task_data, args.sample_num)
         # print(self.dev_data)
 
@@ -634,7 +634,7 @@ class Evoluter:
                         all_score = (
                                             test_score * len(self.test_data)
                                             + len(self.dev_data) * self.evaluated_prompts[test_prompt]
-                                    ) / len(self.task_data)
+                                    ) / 400
                         wf.write(
                             f"{test_mark}\t{test_prompt}\t{dev_score}\t{test_score}\t{all_score}\t{self.sampling_method}\n"
                         )
@@ -649,7 +649,7 @@ class Evoluter:
                     all_score = (
                                         test_score * len(self.test_data)
                                         + len(self.dev_data) * self.evaluated_prompts[test_prompt]
-                                ) / len(self.task_data)
+                                ) / 400
                     wf.write(
                         f"{test_mark}\t{test_prompt}\t{dev_score}\t{test_score}\t{all_score}\t{self.sampling_method}\n"
                     )
@@ -666,7 +666,7 @@ class Evoluter:
                     all_score = (
                                         test_score * len(self.test_data)
                                         + len(self.dev_data) * self.evaluated_prompts[test_prompt]
-                                ) / len(self.task_data)
+                                ) / 400
                     wf.write(
                         f"{test_mark}\t{test_prompt}\t{dev_score}\t{test_score}\t{all_score}\t{self.sampling_method}\n"
                     )
@@ -682,7 +682,7 @@ class Evoluter:
                     all_score = (
                                         test_score * len(self.test_data)
                                         + len(self.dev_data) * self.evaluated_prompts[test_prompt]
-                                ) / len(self.task_data)
+                                ) / 400
                     wf.write(
                         f"{test_mark}\t{test_prompt}\t{dev_score}\t{test_score}\t{all_score}\t{self.sampling_method}\n"
                     )
